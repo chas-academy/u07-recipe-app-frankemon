@@ -5,7 +5,22 @@ u07-recipe-app-frankemon created by GitHub Classroom
 
 How to get started with my recipe app:
 
+- Node.js (Angular requires a current, active LTS, or maintenance LTS version of Node.js).
+- To verify that you have Node installed, open CMD and type
+    node --v
 
+- NPM package manager (To download and install npm packages, you need an npm package manager).
+- To verify that you have Node installed, open CMD and type:
+    npm --v
+
+- Once these are installed and have checked that you have them with version checks, install the needed packages
+- To install the needed packages, open CMD and type:
+    npm install
+
+Once you have installed the needed packages, serve the web app by opening CMD and typing:
+    ng serve -o
+
+This should automatically open the browser on the web application. If not, navigate to localhost:4200 to find the web app.
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
