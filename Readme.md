@@ -7,11 +7,11 @@ How to get started with my recipe app:
 
 - Node.js (Angular requires a current, active LTS, or maintenance LTS version of Node.js).
 - To verify that you have Node installed, open CMD and type
-    node --v
+    node -v
 
 - NPM package manager (To download and install npm packages, you need an npm package manager).
 - To verify that you have Node installed, open CMD and type:
-    npm --v
+    npm -v
 
 - Once these are installed and have checked that you have them with version checks, install the needed packages
 - To install the needed packages, open CMD and type:
