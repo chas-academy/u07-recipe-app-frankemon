@@ -25,10 +25,11 @@ export class RecipeDetailComponent implements OnInit {
 }
 
 getRecipe(): void {
-  const id = +this.route.snapshot.paramMap.get('id');
-  this.recipeService.getRecipe(id)
-    .subscribe(recipe => this.recipe = recipe);
-}
+    // const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.params['id'];
+    this.recipeService.getRecipe(id)
+      .subscribe(recipe => this.recipe = recipe);
+  }
 
   goBack(): void {
   this.location.back();

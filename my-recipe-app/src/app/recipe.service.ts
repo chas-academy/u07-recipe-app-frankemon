@@ -14,14 +14,14 @@ export class RecipeService {
 
   constructor(private messageService: MessageService) { }
 
-  getRecipes(): Observable<Recipe[]> {
+   getRecipes(): Observable<Recipe[]> {
     const recipes = of(RECIPES);
-    this.messageService.add('RecipeService: fetched recipes')
+    this.messageService.add('RecipeService: fetched ecipe');
     return recipes;
   }
 
   getRecipe(id: number): Observable<Recipe> {
-    const recipe = RECIPE.find(h => h.id === id) as Recipe;
+    const recipe = RECIPES.find(h => h.id === id) as Recipe;
     this.messageService.add(`RecipeService: fetched recipe id=${id}`);
     return of(recipe);
   }
