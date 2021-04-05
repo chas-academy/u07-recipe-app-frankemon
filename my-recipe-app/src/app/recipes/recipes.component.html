@@ -1,7 +1,9 @@
 <h2>All Recipes</h2>
 <ul>
-    <li *ngFor="let recipe of recipes" (click)="onSelect(recipe)">
-        <span>{{recipe.name}}</span>
+    <li *ngFor="let recipe of recipes">
+        <a routerLink="/detail/{{recipe.id}}">
+            <span>#{{recipe.id}}</span> {{recipe.name}}
+        </a>
     </li>
 </ul>
-<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
+<!-- <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail> -->
