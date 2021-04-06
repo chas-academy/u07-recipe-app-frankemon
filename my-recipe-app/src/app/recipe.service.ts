@@ -5,25 +5,25 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 import { Recipe } from './recipe';
-import { RECIPES } from './mock-recipes';
 import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  private recipesUrl = 'api/recipes'; // URL to web api
+  private recipesUrl = ''; // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) {}
   /** GET recipes from the "server" */
-  getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.recipesUrl).pipe(
-      tap((_) => this.log('fetched recipes')),
-      catchError(this.handleError<Recipe[]>('getRecipes', []))
-    );
+  getRecipes(): Observable<any> {
+    return this.http
+      .get<any>(this.recipesUrl)
+      .pipe(map((data) => data.recipes));
+    tap((_) => this.log('fetched recipes')),
+      catchError(this.handleError<Recipe[]>('getRecipes', []));
   }
   getRecipe(id: number): Observable<Recipe> {
     const url = `${this.recipesUrl}/${id}`;

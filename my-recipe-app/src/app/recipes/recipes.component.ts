@@ -7,22 +7,24 @@ import { MessageService } from '../message.service';
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.sass']
+  styleUrls: ['./recipes.component.sass'],
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService, private messageService: MessageService) { }
+  constructor(
+    private recipeService: RecipeService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.getRecipes();
   }
 
   getRecipes(): void {
-    this.recipeService.getRecipes()
-    .subscribe(recipes => this.recipes = recipes);
+    this.recipeService.getRecipes().subscribe((recipes) => {
+      console.log('test', recipes);
+      this.recipes = recipes;
+    });
   }
-
-  
-
 }
