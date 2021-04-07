@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import environment from '../environments/environment';
 
 import { Observable, of } from 'rxjs';
 
@@ -11,7 +12,7 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class RecipeService {
-  private recipesUrl = ''; // URL to web api
+  private recipesUrl = `https://api.spoonacular.com/recipes/random?apiKey=${environment.API_KEY}`; // URL to web api
 
   constructor(
     private http: HttpClient,
