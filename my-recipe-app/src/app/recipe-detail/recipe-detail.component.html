@@ -1,9 +1,21 @@
 <div *ngIf="recipe">
-    <h3>{{recipe.title}} Recipe</h3>
-    <div><span>id: </span>{{recipe.id}}</div>
-    <div>
-        <p>Print recipe info here</p>
-    </div>
+    <h3 class="text-xl pb-2">{{recipe.title}}</h3>
+    <div>id: {{recipe.id}}</div>
+    <img class="rounded-lg" src="{{recipe.image}}" alt="">
+    <p [innerHTML]='recipe.summary'></p>
+    <p pt-2>Meal type: {{recipe.dishTypes}}</p>
+    <ul class="recipe-info-list py-2">
+        <li class="recipe-servings">Servings: {{recipe.servings}}</li>
+        <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}}min</li>
+    </ul>
+    <p class="pt-2">Ingredients:</p>
+    <ul class="recipe-ingredient-list py-2" *ngFor="let ingredient of recipe.extendedIngredients">
+        <li>
+            {{ ingredient.name }}
+        </li>
+    </ul>
+    <h3>Instructions:</h3>
+    <p [innerHTML]='recipe.instructions'></p>
 </div>
 <button
     class="clear bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded"
