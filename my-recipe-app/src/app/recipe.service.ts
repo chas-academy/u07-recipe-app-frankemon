@@ -6,13 +6,16 @@ import environment from '../environments/environment';
 import { Observable, of } from 'rxjs';
 
 import { Recipe } from './recipe';
+// import { RecipeDetail } from './recipe-detail';
 import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  private recipesUrl = `https://api.spoonacular.com/recipes/random?apiKey=${environment.API_KEY}`; // URL to web api
+  private spoonUrl = `https://api.spoonacular.com/recipes/`;
+  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${environment.API_KEY}`;
+  // private recipesInformationUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`;
 
   constructor(
     private http: HttpClient,
@@ -21,13 +24,14 @@ export class RecipeService {
   /** GET recipes from the "server" */
   getRecipes(): Observable<any> {
     return this.http
-      .get<any>(this.recipesUrl)
+      .get<any>(this.randomRecipesUrl)
       .pipe(map((data) => data.recipes));
     tap((_) => this.log('fetched recipes')),
       catchError(this.handleError<Recipe[]>('getRecipes', []));
   }
   getRecipe(id: number): Observable<Recipe> {
-    const url = `${this.recipesUrl}/${id}`;
+    // const url = `${this.recipesInformationUrl}/${id}`;
+    const url = `${this.spoonUrl}/${id}/information?apiKey=${environment.API_KEY}`;
     return this.http.get<Recipe>(url).pipe(
       tap((_) => this.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
