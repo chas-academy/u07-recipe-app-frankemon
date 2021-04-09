@@ -1,4 +1,45 @@
-<h2>All Recipes</h2>
+<h1 class="text-xl pb-2">All Recipes</h1>
+<div class="filter-wrapper">
+    <p>Looking for something specific? Filter through meals by selecting a type followed by any preferences you may
+        have
+    </p>
+    <div class="filter-list">
+        <p>Meal type:</p>
+        <label for="breakfast">Breakfast </label>
+        <input type="checkbox" name="breakfast" id="">
+        <label for="lunch">Lunch </label>
+        <input type="checkbox" name="lunch" id="">
+        <label for="dinner">Dinner </label>
+        <input type="checkbox" name="dinner" id="">
+        <label for="dessert">Dessert </label>
+        <input type="checkbox" name="dessert" id="">
+    </div>
+    <div class="filter-list">
+        <p>Filter options:</p>
+        <label for="vegetarian">Vegetarian </label>
+        <input type="checkbox" name="vegetarian" id="">
+        <label for="vegan">Vegan </label>
+        <input type="checkbox" name="vegan" id="">
+        <label for="gluten">Gluten-free </label>
+        <input type="checkbox" name="gluten" id="">
+        <label for="nuts">Nut allergies </label>
+        <input type="checkbox" name="nuts" id="">
+    </div>
+</div>
+<section class="allRecipes">
+    <div class="allRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
+        <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
+            <!-- <h2 class="text-xl pb-2">{{recipe.title}}</h2> -->
+            <!-- <img class="rounded-lg" src="{{recipe.image}}" alt=""> -->
+            <h2 class="text-xl pb-2">Dynamic Recipe Title</h2>
+            <img class="rounded-lg" img src="https://via.placeholder.com/300" alt="">
+            <ul class="recipe-info-list">
+                <li class="recipe-servings pt-2">Servings: </li>
+                <li class="recipe-time">Cook Time: </li>
+            </ul>
+        </div>
+    </div>
+</section>
 <ul>
     <li *ngFor="let recipe of recipes">
         <a routerLink="/detail/{{recipe.id}}">

@@ -20,14 +20,14 @@ export class RecipeService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService
-  ) {}
+  ) // private recipe: Recipe
+  // recipe: string
+  {}
   /** GET recipes from the "server" */
   getRecipes(): Observable<any> {
     return this.http
       .get<any>(this.randomRecipesUrl)
       .pipe(map((data) => data.recipes));
-    tap((_) => this.log('fetched recipes')),
-      catchError(this.handleError<Recipe[]>('getRecipes', []));
   }
   getRecipe(id: number): Observable<Recipe> {
     // const url = `${this.recipesInformationUrl}/${id}`;
