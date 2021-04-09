@@ -5,11 +5,10 @@ import { Location } from '@angular/common';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 
-
 @Component({
   selector: 'app-recipe-detail',
   templateUrl: './recipe-detail.component.html',
-  styleUrls: ['./recipe-detail.component.sass']
+  styleUrls: ['./recipe-detail.component.sass'],
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe?: Recipe;
@@ -18,21 +17,20 @@ export class RecipeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private recipeService: RecipeService,
     private location: Location
-  ) { }
+  ) {}
 
- ngOnInit(): void {
-  this.getRecipe();
-}
+  ngOnInit(): void {
+    this.getRecipe();
+  }
 
-getRecipe(): void {
-    // const id = +this.route.snapshot.paramMap.get('id');
+  getRecipe(): void {
     const id = this.route.snapshot.params['id'];
-    this.recipeService.getRecipe(id)
-      .subscribe(recipe => this.recipe = recipe);
+    this.recipeService
+      .getRecipe(id)
+      .subscribe((recipe) => (this.recipe = recipe));
   }
 
   goBack(): void {
-  this.location.back();
-}
-
+    this.location.back();
+  }
 }

@@ -5,7 +5,7 @@ export interface Recipe {
   summary: string;
   servings: number;
   readyInMinutes: number;
-  extendedIngredients: object;
+  extendedIngredients: any;
   vegetarian: boolean;
   vegan: boolean;
   glutenFree: boolean;
