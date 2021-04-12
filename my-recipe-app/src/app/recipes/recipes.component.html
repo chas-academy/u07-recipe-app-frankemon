@@ -5,25 +5,25 @@
     </p>
     <div class="filter-list">
         <p>Meal type:</p>
-        <label for="breakfast">Breakfast </label>
-        <input type="checkbox" name="breakfast" id="">
-        <label for="lunch">Lunch </label>
-        <input type="checkbox" name="lunch" id="">
-        <label for="dinner">Dinner </label>
-        <input type="checkbox" name="dinner" id="">
-        <label for="dessert">Dessert </label>
-        <input type="checkbox" name="dessert" id="">
+        <label for="breakfast"> Breakfast </label>
+        <input type="checkbox" name="breakfast" id="breakfast">
+        <label for="lunch"> Lunch </label>
+        <input type="checkbox" name="lunch" id="lunch">
+        <label for="dinner"> Dinner </label>
+        <input type="checkbox" name="dinner" id="dinner">
+        <label for="dessert"> Dessert </label>
+        <input type="checkbox" name="dessert" id="dessert">
     </div>
     <div class="filter-list">
         <p>Filter options:</p>
-        <label for="vegetarian">Vegetarian </label>
-        <input type="checkbox" name="vegetarian" id="">
-        <label for="vegan">Vegan </label>
-        <input type="checkbox" name="vegan" id="">
-        <label for="gluten">Gluten-free </label>
-        <input type="checkbox" name="gluten" id="">
-        <label for="nuts">Nut allergies </label>
-        <input type="checkbox" name="nuts" id="">
+        <label for="vegetarian"> Vegetarian </label>
+        <input type="checkbox" name="vegetarian" id="vegetarian">
+        <label for="vegan"> Vegan </label>
+        <input type="checkbox" name="vegan" id="vegan">
+        <label for="gluten"> Gluten-free </label>
+        <input type="checkbox" name="gluten" id="gluten">
+        <label for="gluten"> Dairy-free </label>
+        <input type="checkbox" name="dairy" id="dairy" (click)="filterRecipes()">
     </div>
 </div>
 <section class="allRecipes">
@@ -35,10 +35,11 @@
                         <h2 class="text-xl pb-2">{{recipe.title}}</h2>
                         <img class="rounded-lg" src="{{recipe.image}}" alt="">
                     </a>
-                    <!-- <img class="rounded-lg" img src="https://via.placeholder.com/300" alt=""> -->
                     <ul class="recipe-info-list">
                         <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
                         <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} </li>
+                        <li class="recipe-time">Gluten free: {{recipe.glutenFree}} </li>
+                        <li class="recipe-time">Dairy free: {{recipe.dairyFree}} </li>
                     </ul>
                 </div>
             </li>

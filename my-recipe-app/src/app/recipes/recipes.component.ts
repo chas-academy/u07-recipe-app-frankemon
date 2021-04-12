@@ -12,10 +12,11 @@ import { MessageService } from '../message.service';
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
 
+
   constructor(
-    private recipeService: RecipeService,
+    public recipeService: RecipeService,
     private messageService: MessageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getRecipes();
@@ -23,8 +24,16 @@ export class RecipesComponent implements OnInit {
 
   getRecipes(): void {
     this.recipeService.getRecipes().subscribe((recipes) => {
-      // console.log('test', recipes);
       this.recipes = recipes;
     });
+  }
+
+  filterRecipes() {
+    // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
+    // const diet = 'dairyFree';
+    // this.recipes.filter(item => item.diet === diet);
+    this.recipeService.filterRecipes(this.recipes);
+    console.log('hello');
+    // return this.recipes;
   }
 }

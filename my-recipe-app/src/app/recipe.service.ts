@@ -6,6 +6,7 @@ import environment from '../environments/environment';
 import { Observable, of } from 'rxjs';
 
 import { Recipe } from './recipe';
+// import { Recipes } from './recipes';
 // import { RecipeDetail } from './recipe-detail';
 import { MessageService } from './message.service';
 
@@ -17,12 +18,12 @@ export class RecipeService {
   private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=3&apiKey=${environment.API_KEY}`;
   // private recipesInformationUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`;
 
+
+
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
-  ) // private recipe: Recipe
-  // recipe: string
-  { }
+    private messageService: MessageService,
+  ) { }
   /** GET recipes from the "server" */
   getRecipes(): Observable<any> {
     return this.http
@@ -59,4 +60,18 @@ export class RecipeService {
       return of(result as T);
     };
   }
+  filterRecipes(recipes: any) {
+    // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
+    const diet = 'dairyFree';
+    // recipes.filter(item => item.diet === diet);
+    // recipes.filter((recipes: { diet: string; }) => recipes.diet === diet);
+    // console.log('hello', recipes);
+    // return recipes;
+    const unfilteredRecipes: any = recipes;
+    // const filteredRecipes = recipes.filter((recipe: { diet: string; }) => recipe.diet === diet);
+    const filteredRecipes = recipes.filter((recipe: { diet: string; }) => recipe.diet === diet);
+    console.log(unfilteredRecipes);
+    console.log(filteredRecipes);
+  }
+
 }

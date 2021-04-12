@@ -12,4 +12,5 @@ export interface Recipe {
   dairyFree: boolean;
   dishTypes: string[];
   instructions: string;
+  diet: string;
 }
