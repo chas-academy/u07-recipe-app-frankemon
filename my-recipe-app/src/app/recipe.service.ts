@@ -24,12 +24,14 @@ export class RecipeService {
     private http: HttpClient,
     private messageService: MessageService,
   ) { }
-  /** GET recipes from the "server" */
+
+  /** GET recipes from the server */
   getRecipes(): Observable<any> {
     return this.http
       .get<any>(this.randomRecipesUrl)
       .pipe(map((data) => data.recipes));
   }
+
   getRecipe(id: number): Observable<Recipe> {
     // const url = `${this.recipesInformationUrl}/${id}`;
     const url = `${this.spoonUrl}/${id}/information?apiKey=${environment.API_KEY}`;
@@ -72,6 +74,8 @@ export class RecipeService {
     const filteredRecipes = recipes.filter((recipe: { diet: string; }) => recipe.diet === diet);
     console.log(unfilteredRecipes);
     console.log(filteredRecipes);
+    console.log('log from service');
+
   }
 
 }

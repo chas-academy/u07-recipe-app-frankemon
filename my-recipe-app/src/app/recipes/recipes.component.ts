@@ -15,7 +15,7 @@ export class RecipesComponent implements OnInit {
 
   constructor(
     public recipeService: RecipeService,
-    private messageService: MessageService
+    private messageService: MessageService,
   ) { }
 
   ngOnInit(): void {
@@ -28,12 +28,33 @@ export class RecipesComponent implements OnInit {
     });
   }
 
-  filterRecipes() {
+  // filterRecipes() {
     // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
-    // const diet = 'dairyFree';
+    // const diet = 'vegetarian';
     // this.recipes.filter(item => item.diet === diet);
-    this.recipeService.filterRecipes(this.recipes);
-    console.log('hello');
+    // this.recipeService.filterRecipes(this.recipes);
+    // console.log('log from component');
+    // console.log(this.recipes);
     // return this.recipes;
+  // }
+
+  filterVegan(recipes: any) {
+    const vegan = 'vegan';
+    // recipes.vegan = !recipes.vegan;
+    recipes.filter((recipe: { vegan: boolean; }) => recipes.vegan === vegan);
+    console.log(recipes.vegan);
+    console.log(recipes);
   }
-}
+  filterVegetarian(recipes: any) {
+    recipes.filter((recipe: { vegetarian: boolean; }) => recipes.vegetarian === true);
+    // const vegetarian = 'vegetarian';
+    // recipes.vegan = !recipes.vegan;
+    // const result = recipes.filter((recipe: { vegetarian: boolean; }) => recipes.vegetarian === true);
+    // console.log(result);
+    // console.log(recipes);
+  }
+let result = filterVegetarian(recipes);
+
+// }
+    
+
