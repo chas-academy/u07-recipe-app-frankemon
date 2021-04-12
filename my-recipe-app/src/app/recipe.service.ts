@@ -14,7 +14,7 @@ import { MessageService } from './message.service';
 })
 export class RecipeService {
   private spoonUrl = `https://api.spoonacular.com/recipes/`;
-  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${environment.API_KEY}`;
+  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=3&apiKey=${environment.API_KEY}`;
   // private recipesInformationUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`;
 
   constructor(
@@ -22,7 +22,7 @@ export class RecipeService {
     private messageService: MessageService
   ) // private recipe: Recipe
   // recipe: string
-  {}
+  { }
   /** GET recipes from the "server" */
   getRecipes(): Observable<any> {
     return this.http
