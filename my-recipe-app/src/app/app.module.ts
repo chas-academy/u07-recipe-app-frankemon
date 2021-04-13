@@ -11,6 +11,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { MessagesComponent } from './messages/messages.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SavedRecipeComponent } from './saved-recipe/saved-recipe.component';
 
 // const routes: Routes = [];
 
@@ -23,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
     MessagesComponent,
     HeaderComponent,
     FooterComponent,
+    SavedRecipeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
