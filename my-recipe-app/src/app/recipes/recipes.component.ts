@@ -12,11 +12,10 @@ import { MessageService } from '../message.service';
 export class RecipesComponent implements OnInit {
   recipes: Recipe[] = [];
 
-
   constructor(
     public recipeService: RecipeService,
-    private messageService: MessageService,
-  ) { }
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.getRecipes();
@@ -29,32 +28,45 @@ export class RecipesComponent implements OnInit {
   }
 
   // filterRecipes() {
-    // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
-    // const diet = 'vegetarian';
-    // this.recipes.filter(item => item.diet === diet);
-    // this.recipeService.filterRecipes(this.recipes);
-    // console.log('log from component');
-    // console.log(this.recipes);
-    // return this.recipes;
+  // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
+  // const diet = 'vegetarian';
+  // this.recipes.filter(item => item.diet === diet);
+  // this.recipeService.filterRecipes(this.recipes);
+  // console.log('log from component');
+  // console.log(this.recipes);
+  // return this.recipes;
   // }
 
-  filterVegan(recipes: any) {
-    const vegan = 'vegan';
-    // recipes.vegan = !recipes.vegan;
-    recipes.filter((recipe: { vegan: boolean; }) => recipes.vegan === vegan);
-    console.log(recipes.vegan);
-    console.log(recipes);
+  filterVegetarian() {
+    const vegetarianRecipes = this.recipes.filter((r) => r.vegetarian);
+    console.log(vegetarianRecipes);
   }
-  filterVegetarian(recipes: any) {
-    recipes.filter((recipe: { vegetarian: boolean; }) => recipes.vegetarian === true);
-    // const vegetarian = 'vegetarian';
-    // recipes.vegan = !recipes.vegan;
-    // const result = recipes.filter((recipe: { vegetarian: boolean; }) => recipes.vegetarian === true);
-    // console.log(result);
-    // console.log(recipes);
+  filterVegan() {
+    const veganRecipes = this.recipes.filter((r) => r.vegan);
+    console.log(veganRecipes);
   }
-let result = filterVegetarian(recipes);
-
-// }
-    
-
+  filterGluten() {
+    const glutenRecipes = this.recipes.filter((r) => r.glutenFree);
+    console.log(glutenRecipes);
+  }
+  filterDairy() {
+    const dairyRecipes = this.recipes.filter((r) => r.dairyFree);
+    console.log(dairyRecipes);
+  }
+  // filterBreakfast() {
+  //   const breakfastRecipes = this.recipes.filter((r) => r.XXX);
+  //   console.log(breakfastRecipes);
+  // }
+  // filterLunch() {
+  //   const lunchRecipes = this.recipes.filter((r) => r.XXX);
+  //   console.log(lunchRecipes);
+  // }
+  // filterDinner() {
+  //   const dinnerRecipes = this.recipes.filter((r) => r.XXX);
+  //   console.log(dinnerRecipes);
+  // }
+  // filterDessert() {
+  //   const dessertRecipes = this.recipes.filter((r) => r.XXX);
+  //   console.log(dessertRecipes);
+  // }
+}

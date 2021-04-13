@@ -17,13 +17,13 @@
     <div class="filter-list">
         <p>Filter options:</p>
         <label for="vegetarian"> Vegetarian </label>
-        <input (change)="filterVegetarian(recipes)" type="checkbox" name="vegetarian" id="vegetarian">
+        <input (change)="filterVegetarian()" type="checkbox" name="vegetarian" id="vegetarian">
         <label for="vegan"> Vegan </label>
-        <input type="checkbox" name="vegan" id="vegan">
+        <input (change)="filterVegan()" type="checkbox" name="vegan" id="vegan">
         <label for="gluten"> Gluten-free </label>
-        <input type="checkbox" name="gluten" id="gluten">
+        <input (change)="filterGluten()" type="checkbox" name="gluten" id="gluten">
         <label for="gluten"> Dairy-free </label>
-        <input type="checkbox" name="dairy" id="dairy">
+        <input (change)="filterDairy()" type="checkbox" name="dairy" id="dairy">
     </div>
 </div>
 <section class="allRecipes">
@@ -40,10 +40,13 @@
                         <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} </li>
                         <li class="recipe-time">Gluten free: {{recipe.glutenFree}} </li>
                         <li class="recipe-time">Dairy free: {{recipe.dairyFree}} </li>
+                        <li class="recipe-time">Vegetarian: {{recipe.vegetarian}} </li>
+                        <li class="recipe-time">Vegan: {{recipe.vegan}} </li>
                     </ul>
                 </div>
             </li>
         </ul>
     </div>
 </section>
+
 <!-- <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail> -->
