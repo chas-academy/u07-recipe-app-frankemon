@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
 import { MessageService } from '../message.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipes',
@@ -10,7 +11,11 @@ import { MessageService } from '../message.service';
   styleUrls: ['./recipes.component.sass'],
 })
 export class RecipesComponent implements OnInit {
-  recipes: Recipe[] = [];
+  recipes = [];
+
+  filters: any = [];
+
+  filteredRecipes: any[] = [];
 
   constructor(
     public recipeService: RecipeService,
@@ -24,49 +29,30 @@ export class RecipesComponent implements OnInit {
   getRecipes(): void {
     this.recipeService.getRecipes().subscribe((recipes) => {
       this.recipes = recipes;
+      this.filteredRecipes = recipes;
     });
   }
 
-  // filterRecipes() {
-  // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
-  // const diet = 'vegetarian';
-  // this.recipes.filter(item => item.diet === diet);
-  // this.recipeService.filterRecipes(this.recipes);
-  // console.log('log from component');
-  // console.log(this.recipes);
-  // return this.recipes;
-  // }
+  filterClicked(event: any) {
+    const { id, checked } = event.target;
+    console.log(id, checked);
+    if (checked) {
+      this.filters = [...this.filters, id];
+    } else {
+      this.filters = this.filters.filter((diet: any) => diet !== id);
+    }
 
-  filterVegetarian() {
-    const vegetarianRecipes = this.recipes.filter((r) => r.vegetarian);
-    console.log(vegetarianRecipes);
+    const atLeastOneFilterActive = this.filters.length > 0;
+
+    if (atLeastOneFilterActive) {
+      this.filteredRecipes = this.recipes.filter((recipe) => {
+        const fulfillsAllCriterias = this.filters.every(
+          (diet: any) => recipe[diet]
+        );
+        return fulfillsAllCriterias;
+      });
+    } else {
+      this.filteredRecipes = this.recipes;
+    }
   }
-  filterVegan() {
-    const veganRecipes = this.recipes.filter((r) => r.vegan);
-    console.log(veganRecipes);
-  }
-  filterGluten() {
-    const glutenRecipes = this.recipes.filter((r) => r.glutenFree);
-    console.log(glutenRecipes);
-  }
-  filterDairy() {
-    const dairyRecipes = this.recipes.filter((r) => r.dairyFree);
-    console.log(dairyRecipes);
-  }
-  // filterBreakfast() {
-  //   const breakfastRecipes = this.recipes.filter((r) => r.XXX);
-  //   console.log(breakfastRecipes);
-  // }
-  // filterLunch() {
-  //   const lunchRecipes = this.recipes.filter((r) => r.XXX);
-  //   console.log(lunchRecipes);
-  // }
-  // filterDinner() {
-  //   const dinnerRecipes = this.recipes.filter((r) => r.XXX);
-  //   console.log(dinnerRecipes);
-  // }
-  // filterDessert() {
-  //   const dessertRecipes = this.recipes.filter((r) => r.XXX);
-  //   console.log(dessertRecipes);
-  // }
 }

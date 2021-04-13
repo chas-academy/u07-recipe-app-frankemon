@@ -16,41 +16,40 @@
     </div>
     <div class="filter-list">
         <p>Filter options:</p>
-        <label for="vegetarian"> Vegetarian </label>
-        <input (change)="filterVegetarian()" type="checkbox" name="vegetarian" id="vegetarian">
-        <label for="vegan"> Vegan </label>
-        <input (change)="filterVegan()" type="checkbox" name="vegan" id="vegan">
-        <label for="gluten"> Gluten-free </label>
-        <input (change)="filterGluten()" type="checkbox" name="gluten" id="gluten">
-        <label for="gluten"> Dairy-free </label>
-        <input (change)="filterDairy()" type="checkbox" name="dairy" id="dairy">
-    </div>
-</div>
-<section class="allRecipes">
-    <div class="allRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
-        <ul *ngFor="let recipe of recipes">
-            <li>
-                <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
-                    <a routerLink="/detail/{{recipe.id}}">
-                        <h2 class="text-xl pb-2">{{recipe.title}}</h2>
-                        <img class="rounded-lg" src="{{recipe.image}}" alt="">
-                    </a>
-                    <ul class="recipe-info-list">
-                        <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
-                        <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>
-                        <li class="recipe-time">Gluten free: {{recipe.glutenFree}} </li>
-                        <li class="recipe-time">Dairy free: {{recipe.dairyFree}} </li>
-                        <li class="recipe-time">Vegetarian: {{recipe.vegetarian}} </li>
-                        <li class="recipe-time">Vegan: {{recipe.vegan}} </li>
-                    </ul>
-                    <button
-                        class="clear bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded">Save</button>
-                    <button
-                        class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">Remove</button>
 
-                </div>
-            </li>
-        </ul>
-    </div>
-</section>
-<!-- <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail> -->
+        <label for="vegetarian">Vegetarian</label>
+        <input type="checkbox" name="diet" id="vegetarian" (change)="filterClicked($event)" />
+        <label for="vegan">Vegan</label>
+        <input type="checkbox" name="diet" id="vegan" (change)="filterClicked($event)" />
+        <label for="glutenFree">Gluten-Free</label>
+        <input type="checkbox" name="diet" id="glutenFree" (change)="filterClicked($event)" />
+        <label for="dairyFree">Dairy-free</label>
+        <input type="checkbox" name="diet" id="dairyFree" (change)="filterClicked($event)" />
+        <section class="allRecipes">
+            <div class="allRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
+                <ul *ngFor="let recipe of filteredRecipes">
+                    <li>
+                        <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
+                            <a routerLink="/detail/{{recipe.id}}">
+                                <h2 class="text-xl pb-2">{{recipe.title}}</h2>
+                                <img class="rounded-lg" src="{{recipe.image}}" alt="">
+                            </a>
+                            <ul class="recipe-info-list">
+                                <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
+                                <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>
+                                <li class="recipe-time">Gluten free: {{recipe.glutenFree}} </li>
+                                <li class="recipe-time">Dairy free: {{recipe.dairyFree}} </li>
+                                <li class="recipe-time">Vegetarian: {{recipe.vegetarian}} </li>
+                                <li class="recipe-time">Vegan: {{recipe.vegan}} </li>
+                            </ul>
+                            <button
+                                class="clear bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-1 px-2 border border-green-500 hover:border-transparent rounded">Save</button>
+                            <button
+                                class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">Remove</button>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!-- <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail> -->
