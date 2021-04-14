@@ -13,8 +13,12 @@ export class SavedRecipeService {
     console.log(this.savedRecipes);
   }
 
-  removeRecipe(event: any): void {
-    this.savedRecipes.splice(event.target.id);
+  deleteRecipe(i: any): void {
+    this.savedRecipes.splice(i, 1);
     console.log(this.savedRecipes);
+  }
+
+  getSavedRecipes() {
+    return this.savedRecipes;
   }
 }

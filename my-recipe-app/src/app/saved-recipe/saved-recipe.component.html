@@ -1,16 +1,26 @@
 <section class="savedRecipes">
     <div class="allRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
-        <div class="recipe-card bg-gray-200 my-2 p-2 border rounded-lg max-w-xs">
-            <!-- <h2 class="text-xl pb-2">{{recipe.title}}</h2> -->
-            <!-- <img class="rounded-lg" src="{{recipe.image}}" alt=""> -->
-            <h2 class="text-xl pb-2">Dynamic Recipe Title</h2>
-            <img class="rounded-lg" img src="https://via.placeholder.com/300" alt="">
-            <ul class="recipe-info-list">
-                <li class="recipe-servings pt-2">Servings: </li>
-                <li class="recipe-time">Cook Time: </li>
-            </ul>
-            <button
-                class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">Remove</button>
-        </div>
-    </div>
-</section>
+        <ul *ngFor="let recipe of recipesList; let i = index">
+            <li>
+                <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
+                    <a routerLink="/detail/{{recipe.id}}">
+                        <h2 class="text-xl pb-2">{{recipe.title}}</h2>
+                        <img class="rounded-lg" src="{{recipe.image}}" alt="">
+                    </a>
+                    <ul class="recipe-info-list">
+                        <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
+                        <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>
+                        <li class="recipe-time">Gluten free: {{recipe.glutenFree}} </li>
+                        <li class="recipe-time">Dairy free: {{recipe.dairyFree}} </li>
+                        <li class="recipe-time">Vegetarian: {{recipe.vegetarian}} </li>
+                        <li class="recipe-time">Vegan: {{recipe.vegan}} </li>
+                        <li class="recipe-time">id: {{recipe.id}} </li>
+                    </ul>
+                    <p>{{recipe}}</p>
+                    <button (click)="removeRecipe(i)"
+                        class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">
+                        Remove
+                    </button>
+                </div>
+                <!-- </div> -->
+                <!-- </section> -->

@@ -30,7 +30,10 @@ export class RecipeDetailComponent implements OnInit {
       .getRecipe(id)
       .subscribe((recipe) => (this.recipe = recipe));
   }
-
+  // saving recipes
+  // method here
+  // called a function in service
+  // function prints saved recipes
   goBack(): void {
     this.location.back();
   }
