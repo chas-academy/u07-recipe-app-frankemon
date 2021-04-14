@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
 import { MessageService } from '../message.service';
+import { SavedRecipeService } from '../saved-recipe.service';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -19,7 +20,8 @@ export class RecipesComponent implements OnInit {
 
   constructor(
     public recipeService: RecipeService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public saveMessageService: SavedRecipeService
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +56,11 @@ export class RecipesComponent implements OnInit {
     } else {
       this.filteredRecipes = this.recipes;
     }
+  }
+  saveRecipe(): void {
+    this.saveRecipe();
+  }
+  removeRecipe(): void {
+    this.removeRecipe();
   }
 }
