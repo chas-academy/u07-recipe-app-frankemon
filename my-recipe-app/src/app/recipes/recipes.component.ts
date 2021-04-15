@@ -21,7 +21,7 @@ export class RecipesComponent implements OnInit {
   constructor(
     public recipeService: RecipeService,
     private messageService: MessageService,
-    public saveMessageService: SavedRecipeService
+    public savedRecipeService: SavedRecipeService
   ) {}
 
   ngOnInit(): void {
@@ -56,11 +56,5 @@ export class RecipesComponent implements OnInit {
     } else {
       this.filteredRecipes = this.recipes;
     }
-  }
-  saveRecipe(): void {
-    this.saveRecipe();
-  }
-  removeRecipe(): void {
-    this.removeRecipe();
   }
 }
