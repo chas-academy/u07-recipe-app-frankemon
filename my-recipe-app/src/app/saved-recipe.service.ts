@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Recipe } from './recipe';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SavedRecipeService {
-  savedRecipes: any = [];
+  // savedRecipes: any = [];
+  savedRecipes: Recipe[] = [];
 
-  constructor() {}
+  constructor() { }
 
-  saveRecipe(event: any): void {
-    this.savedRecipes.push(event.target.id);
+  // saveRecipe(event: any): void {
+  //   this.savedRecipes.push(event.target.id);
+  //   console.log(this.savedRecipes);
+  // }
+
+  saveRecipe(recipe: Recipe) {
+    this.savedRecipes.push(recipe);
     console.log(this.savedRecipes);
   }
 
