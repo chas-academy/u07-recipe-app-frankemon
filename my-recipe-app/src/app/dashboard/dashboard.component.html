@@ -1,12 +1,14 @@
 <div class="featuredRecipeCard flex bg-green-200 my-2 p-2 border rounded-lg min-w-min">
     <div class="px-2">
         <ul *ngFor="let recipe of featuredRecipes">
-            <h2 class="text-xl pb-2">{{recipe.title}}</h2>
-            <img class="rounded-lg" src="{{recipe.image}}" alt="">
-            <p>Dynamic description</p>
+            <a routerLink="/detail/{{recipe.id}}">
+                <h2 class="text-xl pb-2">{{recipe.title}}</h2>
+                <img class="rounded-lg" src="{{recipe.image}}" alt="">
+            </a>
+            <p class="pb-2" [innerHTML]='recipe.summary'></p>
             <ul class="recipe-info-list">
-                <li class="recipe-servings pt-2">Servings: </li>
-                <li class="recipe-time">Cook Time: </li>
+                <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
+                <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} </li>
             </ul>
         </ul>
     </div>
