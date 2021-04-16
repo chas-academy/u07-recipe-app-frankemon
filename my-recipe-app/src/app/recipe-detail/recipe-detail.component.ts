@@ -17,23 +17,18 @@ export class RecipeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private recipeService: RecipeService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getRecipe();
   }
 
   getRecipe(): void {
-    // const id = +this.route.snapshot.paramMap.get('id');
     const id = this.route.snapshot.params['id'];
     this.recipeService
       .getRecipe(id)
       .subscribe((recipe) => (this.recipe = recipe));
   }
-  // saving recipes
-  // method here
-  // called a function in service
-  // function prints saved recipes
   goBack(): void {
     this.location.back();
   }

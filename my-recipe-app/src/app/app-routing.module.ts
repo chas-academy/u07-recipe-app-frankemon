@@ -7,7 +7,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { SavedRecipeComponent } from './saved-recipe/saved-recipe.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/start', pathMatch: 'full' },
   { path: 'start', component: DashboardComponent },
   { path: 'detail/:id', component: RecipeDetailComponent },
   { path: 'recipes', component: RecipesComponent },
@@ -19,4 +19,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

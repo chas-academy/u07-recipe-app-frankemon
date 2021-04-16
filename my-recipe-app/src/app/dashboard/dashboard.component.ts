@@ -9,15 +9,29 @@ import { RecipeService } from '../recipe.service';
 })
 export class DashboardComponent implements OnInit {
   recipes: Recipe[] = [];
+  suggestedRecipes: Recipe[] = [];
+  featuredRecipes: Recipe[] = [];
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit(): void {
     this.getRecipes();
+    this.getSuggestedRecipes();
+    this.getFeaturedRecipe();
+  }
+
+  getSuggestedRecipes() {
+    this.recipeService.getSuggestedRecipes()
+      .subscribe(recipes => this.suggestedRecipes = recipes);
+  }
+
+  getFeaturedRecipe() {
+    this.recipeService.getFeaturedRecipe()
+      .subscribe(recipes => this.featuredRecipes = recipes);
   }
 
   getRecipes(): void {
-  this.recipeService.getRecipes()
-  .subscribe(recipes => this.recipes = recipes.slice(1, 5));
+    this.recipeService.getRecipes()
+      .subscribe(recipes => this.recipes = recipes);
   }
 }

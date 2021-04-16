@@ -15,20 +15,34 @@ import { MessageService } from './message.service';
 })
 export class RecipeService {
   private spoonUrl = `https://api.spoonacular.com/recipes/`;
+  private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${environment.API_KEY}`;
+  private spoonSuggestedUrl = `https://api.spoonacular.com/recipes/random?number=4&apiKey=${environment.API_KEY}`;
   private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=3&apiKey=${environment.API_KEY}`;
-  // private recipesInformationUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${environment.API_KEY}`;
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
-  ) {}
+  ) { }
 
   /** GET recipes from the server */
+  getFeaturedRecipe(): Observable<any> {
+    return this.http
+      .get<any>(this.spoonFeaturedUrl)
+      .pipe(map((data) => data.recipes));
+  }
+  getSuggestedRecipes(): Observable<any> {
+    return this.http
+      .get<any>(this.spoonSuggestedUrl)
+      .pipe(map((data) => data.recipes));
+  }
+
   getRecipes(): Observable<any> {
     return this.http
       .get<any>(this.randomRecipesUrl)
       .pipe(map((data) => data.recipes));
   }
+
+
 
   getRecipe(id: number): Observable<Recipe> {
     // const url = `${this.recipesInformationUrl}/${id}`;
