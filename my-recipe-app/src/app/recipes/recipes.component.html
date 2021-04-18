@@ -6,27 +6,28 @@
     <div class="filter-list">
         <p>Meal type:</p>
         <label for="breakfast"> Breakfast </label>
-        <input type="checkbox" name="breakfast" id="breakfast" (change)="filterClicked($event)">
-        <label for="dessert"> Dessert </label>
-        <input type="checkbox" name="breakfast" id="breakfast" (change)="filterClicked($event)">
+        <input type="checkbox" name="breakfast" id="breakfast" (change)="filterType($event)">
         <label for="lunch"> Lunch </label>
-        <input type="checkbox" name="lunch" id="lunch" (change)="filterClicked($event)">
+        <input type="checkbox" name="lunch" id="lunch" (change)="filterType($event)">
         <label for="dinner"> Dinner </label>
-        <input type="checkbox" name="dinner" id="dinner" (change)="filterClicked($event)">
+        <input type="checkbox" name="dinner" id="dinner" (change)="filterType($event)">
         <label for="dessert"> Dessert </label>
-        <input type="checkbox" name="dessert" id="dessert" (change)="filterClicked($event)">
+        <input type="checkbox" name="dessert" id="dessert" (change)="filterType($event)">
+        <label for="dessert"> Salad </label>
+        <input type="checkbox" name="salad" id="salad" (change)="filterType($event)">
+        <label for="dessert"> Soup </label>
+        <input type="checkbox" name="soup" id="soup" (change)="filterType($event)">
     </div>
     <div class="filter-list">
         <p>Filter options:</p>
-
-        <label for="vegetarian">Vegetarian</label>
-        <input type="checkbox" name="diet" id="vegetarian" (change)="filterClicked($event)" />
-        <label for="vegan">Vegan</label>
-        <input type="checkbox" name="diet" id="vegan" (change)="filterClicked($event)" />
-        <label for="glutenFree">Gluten-Free</label>
-        <input type="checkbox" name="diet" id="glutenFree" (change)="filterClicked($event)" />
-        <label for="dairyFree">Dairy-free</label>
-        <input type="checkbox" name="diet" id="dairyFree" (change)="filterClicked($event)" />
+        <label for="vegetarian"> Vegetarian </label>
+        <input type="checkbox" name="diet" id="vegetarian" (change)="filterDiet($event)" />
+        <label for="vegan"> Vegan </label>
+        <input type="checkbox" name="diet" id="vegan" (change)="filterDiet($event)" />
+        <label for="glutenFree"> Gluten-Free </label>
+        <input type="checkbox" name="diet" id="glutenFree" (change)="filterDiet($event)" />
+        <label for="dairyFree"> Dairy-free </label>
+        <input type="checkbox" name="diet" id="dairyFree" (change)="filterDiet($event)" />
         <section class="allRecipes">
             <div class="allRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
                 <ul *ngFor="let recipe of filteredRecipes">
@@ -36,6 +37,7 @@
                                 <h2 class="text-xl pb-2">{{recipe.title}}</h2>
                                 <img class="rounded-lg" src="{{recipe.image}}" alt="">
                             </a>
+                            <p>Type: {{recipe.dishTypes}}</p>
                             <ul class="recipe-info-list">
                                 <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
                                 <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>

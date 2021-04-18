@@ -22,7 +22,7 @@ export class RecipeService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService
-  ) { }
+  ) {}
 
   /** GET recipes from the server */
   getFeaturedRecipe(): Observable<any> {
@@ -41,8 +41,6 @@ export class RecipeService {
       .get<any>(this.randomRecipesUrl)
       .pipe(map((data) => data.recipes));
   }
-
-
 
   getRecipe(id: number): Observable<Recipe> {
     // const url = `${this.recipesInformationUrl}/${id}`;
@@ -74,19 +72,4 @@ export class RecipeService {
       return of(result as T);
     };
   }
-  // filterRecipes(recipes: any) {
-  // const diet = ['vegan', 'vegetarian', 'glutenFree', 'dairyFree']
-  // const diet = 'dairyFree';
-  // recipes.filter(item => item.diet === diet);
-  // recipes.filter((recipes: { diet: string; }) => recipes.diet === diet);
-  // console.log('hello', recipes);
-  // return recipes;
-  // const unfilteredRecipes: any = recipes;
-  // const filteredRecipes = recipes.filter((recipe: { diet: string; }) => recipe.diet === diet);
-  // const filteredRecipes = recipes.filter((recipe: { diet: string; }) => recipe.diet === diet);
-  // console.log(unfilteredRecipes);
-  // console.log(filteredRecipes);
-  // console.log('log from service');
-
-  // }
 }

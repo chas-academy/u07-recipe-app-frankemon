@@ -18,6 +18,13 @@ export class RecipesComponent implements OnInit {
 
   filteredRecipes: any[] = [];
 
+  typeFilters: any = [];
+
+  typesFiltered: any = [];
+
+  dishTypeFilters: any = [];
+  dishTypes: Array<string> = [];
+
   constructor(
     public recipeService: RecipeService,
     private messageService: MessageService,
@@ -32,10 +39,13 @@ export class RecipesComponent implements OnInit {
     this.recipeService.getRecipes().subscribe((recipes) => {
       this.recipes = recipes;
       this.filteredRecipes = recipes;
+      this.recipes.forEach((recipes: any) => console.log(recipes.dishTypes));
+      console.log(this.filters);
+      console.log(this.filteredRecipes);
     });
   }
 
-  filterClicked(event: any) {
+  filterDiet(event: any) {
     const { id, checked } = event.target;
     console.log(id, checked);
     if (checked) {
@@ -44,17 +54,73 @@ export class RecipesComponent implements OnInit {
       this.filters = this.filters.filter((diet: any) => diet !== id);
     }
 
-    const atLeastOneFilterActive = this.filters.length > 0;
+    const minDietFilter = this.filters.length > 0;
 
-    if (atLeastOneFilterActive) {
+    if (minDietFilter) {
       this.filteredRecipes = this.recipes.filter((recipe) => {
-        const fulfillsAllCriterias = this.filters.every(
+        const meetsDietCriteria = this.filters.every(
           (diet: any) => recipe[diet]
         );
-        return fulfillsAllCriterias;
+        return meetsDietCriteria;
       });
     } else {
       this.filteredRecipes = this.recipes;
     }
+  }
+
+  filterType(event: any) {
+    const { id, checked } = event.target;
+    console.log(id, checked);
+    if (checked) {
+      this.typeFilters = [...this.typeFilters, id];
+    } else {
+      this.typeFilters = this.typeFilters.filter(
+        (dishType: any) => dishType !== id
+      );
+    }
+
+    const minTypeFilter = this.filters.length > 0;
+
+    if (minTypeFilter) {
+      this.filteredRecipes = this.recipes.filter((recipe) => {
+        const meetsTypeCriteria = this.filters.every(
+          (dishType: any) => recipe[dishType]
+        );
+        return meetsTypeCriteria;
+      });
+    } else {
+      this.filteredRecipes = this.recipes;
+    }
+    // this.recipes.forEach((recipe) => {
+    //   recipe.dishTypes.forEach((dishType: any) => {
+    //     const matches = this.dishTypeFilters.includes(dishType);
+    //     const matchingTypes: any = [];
+    //     if (matches) {
+    //       matchingTypes.push(recipe);
+    //       console.log(matchingTypes);
+    //       return matchingTypes;
+    //     }
+    //   });
+    // });
+    // } else {
+    //   this.typesFiltered = this.recipes;
+    // }
+
+    // filterCompare = (array: any) => {
+    //   if (a.length !== b.length) return false;
+    //   const uniqueValues = new Set([...a, ...b]);
+    //   for (const v of uniqueValues) {
+    //     const aCount = a.filter((e) => e === v).length;
+    //     const bCount = b.filter((e) => e === v).length;
+    //     if (aCount !== bCount) return false;
+    //   }
+    //   return true;
+    // };
+
+    // splitTypes() {
+    //   const type = this.recipe.split(this.dishTypes);
+    //   const splitTypes = this.dishTypes.split(' ', 5);
+    //   console.log(splitTypes);
+    // }
   }
 }
