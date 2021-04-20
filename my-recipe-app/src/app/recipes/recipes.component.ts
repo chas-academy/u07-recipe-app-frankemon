@@ -12,11 +12,11 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./recipes.component.sass'],
 })
 export class RecipesComponent implements OnInit {
-  recipes: any = [];
+  recipes: any[] = [];
 
   filters: any = [];
 
-  dishTypes: Array<Recipe> = [];
+  // dishTypeFilter = [];
 
   filteredRecipes: any[] = [];
 
@@ -34,15 +34,15 @@ export class RecipesComponent implements OnInit {
     this.recipeService.getRecipes().subscribe((recipes) => {
       this.recipes = recipes;
       this.filteredRecipes = recipes;
-      this.recipes.forEach((recipes: any) => console.log(recipes.dishTypes));
+      this.recipes.forEach((recipes: any) => console.log(recipes.dishType));
       console.log(this.filters);
       console.log(this.filteredRecipes);
     });
 
-    const formattedRecipes = this.recipes.map((recipe: any[]) => ({
+    const formattedRecipes = this.recipes.map((recipe: any) => ({
       ...recipe,
-      ...recipe.dishTypes.reduce((accumulator: any, dishTypes: any) => {
-        accumulator[dishTypes] = true;
+      ...recipe.dishTypes.reduce((accumulator: any, dishType: any) => {
+        accumulator[dishType] = true;
         return accumulator;
       }, {}),
     }));
