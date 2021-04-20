@@ -1,24 +1,31 @@
-<section class="savedRecipes">
-    <div class="allRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
-        <ul *ngFor="let recipe of recipesList; let i = index">
-            <li>
-                <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
-                    <a routerLink="/detail/{{recipe.id}}">
-                        <h2 class="text-xl pb-2">{{recipe.title}}</h2>
-                        <img class="rounded-lg" src="{{recipe.image}}" alt="">
-                    </a>
-                    <ul class="recipe-info-list">
-                        <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
-                        <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>
-                        <li class="recipe-time">Gluten free: {{recipe.glutenFree}} </li>
-                        <li class="recipe-time">Dairy free: {{recipe.dairyFree}} </li>
-                        <li class="recipe-time">Vegetarian: {{recipe.vegetarian}} </li>
-                        <li class="recipe-time">Vegan: {{recipe.vegan}} </li>
-                        <li class="recipe-time">id: {{recipe.id}} </li>
-                    </ul>
-                    <p>{{recipe}}</p>
-                    <button (click)="removeRecipe(i)"
-                        class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">
-                        Remove
-                    </button>
-                </div>
+<div class="bg-gray-100 my-2 p-2 border rounded-lg min-w-min shadow-xl">
+    <h1 class="text-xl">Your saved recipes:</h1>
+    <section class="savedRecipes">
+        <div class="allRecipes-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
+            <ul *ngFor="let recipe of recipesList; let i = index">
+                <li>
+                    <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
+                        <a routerLink="/detail/{{recipe.id}}">
+                            <h2 class="text-xl pb-2">{{recipe.title}}</h2>
+                            <img class="rounded-lg" src="{{recipe.image}}" alt="">
+                        </a>
+                        <ul class="recipe-info-list">
+                            <li class="recipe-servings pt-2"><span class="font-bold">Servings:
+                                </span>{{recipe.servings}}
+                            </li>
+                            <li class="recipe-time"><span class="font-bold">Cook Time: </span>{{recipe.readyInMinutes}}
+                                min
+                            </li>
+                            <li class="recipe-time"><span class="font-bold">Gluten free: </span>{{recipe.glutenFree}}
+                            </li>
+                            <li class="recipe-time"><span class="font-bold">Dairy free: </span>{{recipe.dairyFree}}
+                            </li>
+                            <li class="recipe-time"><span class="font-bold">Vegetarian: </span>{{recipe.vegetarian}}
+                            </li>
+                            <li class="recipe-time"><span class="font-bold">Vegan: </span>{{recipe.vegan}} </li>
+                        </ul>
+                        <button (click)="removeRecipe(i)"
+                            class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">
+                            Remove
+                        </button>
+                    </div>

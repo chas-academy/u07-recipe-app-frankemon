@@ -16,9 +16,9 @@ export class RecipesComponent implements OnInit {
 
   filters: any = [];
 
-  // dishTypeFilter = [];
-
   filteredRecipes: any[] = [];
+
+  displaySave = true;
 
   constructor(
     public recipeService: RecipeService,
@@ -29,44 +29,44 @@ export class RecipesComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipes();
   }
-
+  // Gets recipes, prints them out according to filter options
   getRecipes(): void {
     this.recipeService.getRecipes().subscribe((recipes) => {
       this.recipes = recipes;
       this.filteredRecipes = recipes;
-      this.recipes.forEach((recipes: any) => console.log(recipes.dishType));
-      console.log(this.filters);
-      console.log(this.filteredRecipes);
+      this.filterDishType();
     });
-
-    const formattedRecipes = this.recipes.map((recipe: any) => ({
+  }
+  // Adds dishType as a filter type, combines with diet filter below so user can filter by diet AND dish type
+  filterDishType(): void {
+    const recipesByType = this.recipes.map((recipe: any) => ({
       ...recipe,
       ...recipe.dishTypes.reduce((accumulator: any, dishType: any) => {
         accumulator[dishType] = true;
         return accumulator;
       }, {}),
     }));
-    this.recipes = formattedRecipes;
-    this.filteredRecipes = formattedRecipes;
+
+    this.recipes = recipesByType;
+    this.filteredRecipes = recipesByType;
   }
 
   dishTypeFilterClicked(event: any): any {
     this.filterDiet(event);
     return;
   }
-
+  // Adds filter by diet which in turn adds diet types to an array, is combined with dishType filter above
   filterDiet(event: any) {
     const { id, checked } = event.target;
-    console.log(id, checked);
     if (checked) {
       this.filters = [...this.filters, id];
     } else {
       this.filters = this.filters.filter((diet: any) => diet !== id);
     }
+    // Resets the filtering array incase there are no boxes checked
+    const minimumDietFilter = this.filters.length > 0;
 
-    const minDietFilter = this.filters.length > 0;
-
-    if (minDietFilter) {
+    if (minimumDietFilter) {
       this.filteredRecipes = this.recipes.filter((recipe: any) => {
         const meetsDietCriteria = this.filters.every(
           (diet: any) => recipe[diet]
