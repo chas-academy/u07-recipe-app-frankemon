@@ -5,15 +5,9 @@ import { Recipe } from './recipe';
   providedIn: 'root',
 })
 export class SavedRecipeService {
-  // savedRecipes: any = [];
   savedRecipes: Recipe[] = [];
 
-  constructor() { }
-
-  // saveRecipe(event: any): void {
-  //   this.savedRecipes.push(event.target.id);
-  //   console.log(this.savedRecipes);
-  // }
+  constructor() {}
 
   saveRecipe(recipe: Recipe) {
     this.savedRecipes.push(recipe);

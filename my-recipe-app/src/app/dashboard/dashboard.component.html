@@ -1,4 +1,4 @@
-<div class="featuredRecipeCard flex bg-green-200 my-2 p-2 border rounded-lg min-w-min">
+<div class="featuredRecipeCard bg-green-200 my-2 p-2 border rounded-lg min-w-min">
     <div class="px-2">
         <ul *ngFor="let recipe of featuredRecipes">
             <a routerLink="/detail/{{recipe.id}}">
@@ -13,20 +13,22 @@
         </ul>
     </div>
 </div>
-<h1 class="text-xl pb-2">Our suggestions</h1>
-<section class="topRecipes">
-    <div class="topRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
-        <ul *ngFor="let recipe of suggestedRecipes">
-            <div class="recipe-card bg-indigo-200 my-2 p-2 border rounded-lg max-w-xs">
-                <a routerLink="/detail/{{recipe.id}}">
-                    <h2 class="text-xl pb-2">{{recipe.title}}</h2>
-                    <img class="rounded-lg" src="{{recipe.image}}" alt="">
-                </a>
-                <ul class="recipe-info-list">
-                    <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
-                    <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>
-                </ul>
-            </div>
-        </ul>
-    </div>
-</section>
+<div class="suggestion-wrapper bg-gray-100 py-2 p-2 border rounded-lg">
+    <h1 class="text-xl pb-2">Our suggestions</h1>
+    <section class="topRecipes">
+        <div class="topRecipes-wrapper grid grid-cols-4 grid-rows-2 gap-2">
+            <ul *ngFor="let recipe of suggestedRecipes">
+                <div class="recipe-card bg-indigo-200 my-2 p-2 border rounded-lg max-w-xs">
+                    <a routerLink="/detail/{{recipe.id}}">
+                        <h2 class="text-xl pb-2">{{recipe.title}}</h2>
+                        <img class="rounded-lg" src="{{recipe.image}}" alt="">
+                    </a>
+                    <ul class="recipe-info-list">
+                        <li class="recipe-servings pt-2">Servings: {{recipe.servings}} </li>
+                        <li class="recipe-time">Cook Time: {{recipe.readyInMinutes}} min </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </section>
+</div>

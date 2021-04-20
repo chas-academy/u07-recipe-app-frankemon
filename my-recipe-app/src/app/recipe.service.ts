@@ -30,6 +30,7 @@ export class RecipeService {
       .get<any>(this.spoonFeaturedUrl)
       .pipe(map((data) => data.recipes));
   }
+
   getSuggestedRecipes(): Observable<any> {
     return this.http
       .get<any>(this.spoonSuggestedUrl)
@@ -43,13 +44,13 @@ export class RecipeService {
   }
 
   getRecipe(id: number): Observable<Recipe> {
-    // const url = `${this.recipesInformationUrl}/${id}`;
     const url = `${this.spoonUrl}/${id}/information?apiKey=${environment.API_KEY}`;
     return this.http.get<Recipe>(url).pipe(
       tap((_) => this.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
     );
   }
+
   private log(message: string) {
     this.messageService.add(`RecipeService: ${message}`);
   }

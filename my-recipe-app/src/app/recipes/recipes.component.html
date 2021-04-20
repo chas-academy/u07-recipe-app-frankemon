@@ -6,17 +6,17 @@
     <div class="filter-list">
         <p>Meal type:</p>
         <label for="breakfast"> Breakfast </label>
-        <input type="checkbox" name="breakfast" id="breakfast" (change)="filterType($event)">
+        <input type="checkbox" name="breakfast" id="breakfast" (change)="filterDiet($event)">
         <label for="lunch"> Lunch </label>
-        <input type="checkbox" name="lunch" id="lunch" (change)="filterType($event)">
+        <input type="checkbox" name="lunch" id="lunch" (change)="filterDiet($event)">
         <label for="dinner"> Dinner </label>
-        <input type="checkbox" name="dinner" id="dinner" (change)="filterType($event)">
+        <input type="checkbox" name="dinner" id="dinner" (change)="filterDiet($event)">
         <label for="dessert"> Dessert </label>
-        <input type="checkbox" name="dessert" id="dessert" (change)="filterType($event)">
+        <input type="checkbox" name="dessert" id="dessert" (change)="filterDiet($event)">
         <label for="dessert"> Salad </label>
-        <input type="checkbox" name="salad" id="salad" (change)="filterType($event)">
+        <input type="checkbox" name="salad" id="salad" (change)="filterDiet($event)">
         <label for="dessert"> Soup </label>
-        <input type="checkbox" name="soup" id="soup" (change)="filterType($event)">
+        <input type="checkbox" name="soup" id="soup" (change)="filterDiet($event)">
     </div>
     <div class="filter-list">
         <p>Filter options:</p>
@@ -55,10 +55,8 @@
                                 class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">
                                 Remove
                             </button>
-
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
-        <!-- <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail> -->
