@@ -20,6 +20,10 @@ export class RecipesComponent implements OnInit {
 
   displaySave = true;
 
+  showAllRecipes = true;
+
+  toggleSave = true;
+
   constructor(
     public recipeService: RecipeService,
     private messageService: MessageService,
@@ -35,6 +39,7 @@ export class RecipesComponent implements OnInit {
       this.recipes = recipes;
       this.filteredRecipes = recipes;
       this.filterDishType();
+      console.log(this.showAllRecipes);
     });
   }
   // Adds dishType as a filter type, combines with diet filter below so user can filter by diet AND dish type
@@ -51,10 +56,6 @@ export class RecipesComponent implements OnInit {
     this.filteredRecipes = recipesByType;
   }
 
-  dishTypeFilterClicked(event: any): any {
-    this.filterDiet(event);
-    return;
-  }
   // Adds filter by diet which in turn adds diet types to an array, is combined with dishType filter above
   filterDiet(event: any) {
     const { id, checked } = event.target;
@@ -75,6 +76,11 @@ export class RecipesComponent implements OnInit {
       });
     } else {
       this.filteredRecipes = this.recipes;
+    }
+    if (this.filteredRecipes.length > 0) {
+      this.showAllRecipes = true;
+    } else {
+      this.showAllRecipes = false;
     }
   }
 }

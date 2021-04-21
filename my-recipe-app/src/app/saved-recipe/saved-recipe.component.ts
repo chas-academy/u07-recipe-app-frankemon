@@ -9,14 +9,25 @@ import { SavedRecipeService } from '../saved-recipe.service';
 })
 export class SavedRecipeComponent implements OnInit {
   recipesList: any;
-  constructor(private savedRecipeService: SavedRecipeService) { }
+
+  showSavedRecipes = true;
+  // savedRecipeCheck: any;
+
+  constructor(public savedRecipeService: SavedRecipeService) {}
 
   ngOnInit(): void {
     this.recipesList = this.savedRecipeService.getSavedRecipes();
   }
+
   removeRecipe(e: number): void {
     this.savedRecipeService.deleteRecipe(e);
   }
-}
 
-// save each recipe as an object? can make it easier than trying to fix logic
+  // userSavedRecipes(array: any) {
+  //   if (this.savedRecipeCheck.length === 0) {
+  //     this.savedRecipeCheck = false;
+  //   } else {
+  //     this.savedRecipeCheck = true;
+  //   }
+  // }
+}

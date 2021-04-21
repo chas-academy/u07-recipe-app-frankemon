@@ -8,11 +8,18 @@ import { RecipesComponent } from './recipes/recipes.component';
 export class SavedRecipeService {
   savedRecipes: Recipe[] = [];
 
+  displaySave = true;
+
+  selectedButton: any;
+
+  // savedRecipeCheck = true;
+
   constructor() {}
 
   saveRecipe(recipe: Recipe) {
+    this.selectedButton = this.savedRecipes;
     this.savedRecipes.push(recipe);
-    // recipe.displaySave = false;
+    this.displaySave = false;
   }
 
   deleteRecipe(i: any): void {
