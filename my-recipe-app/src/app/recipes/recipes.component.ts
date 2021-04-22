@@ -18,11 +18,7 @@ export class RecipesComponent implements OnInit {
 
   filteredRecipes: any[] = [];
 
-  displaySave = true;
-
   showAllRecipes = true;
-
-  toggleSave = true;
 
   constructor(
     public recipeService: RecipeService,

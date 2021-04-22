@@ -13,7 +13,7 @@ import { Recipe } from '../recipe';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe?: Recipe;
-  savedRecipes: Recipe[] = [];
+  // savedRecipes: Recipe[] = [];
 
   constructor(
     private route: ActivatedRoute,

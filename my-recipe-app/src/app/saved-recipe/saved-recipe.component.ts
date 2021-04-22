@@ -10,9 +10,6 @@ import { SavedRecipeService } from '../saved-recipe.service';
 export class SavedRecipeComponent implements OnInit {
   recipesList: any;
 
-  showSavedRecipes = true;
-  // savedRecipeCheck: any;
-
   constructor(public savedRecipeService: SavedRecipeService) {}
 
   ngOnInit(): void {
@@ -22,12 +19,4 @@ export class SavedRecipeComponent implements OnInit {
   removeRecipe(e: number): void {
     this.savedRecipeService.deleteRecipe(e);
   }
-
-  // userSavedRecipes(array: any) {
-  //   if (this.savedRecipeCheck.length === 0) {
-  //     this.savedRecipeCheck = false;
-  //   } else {
-  //     this.savedRecipeCheck = true;
-  //   }
-  // }
 }
