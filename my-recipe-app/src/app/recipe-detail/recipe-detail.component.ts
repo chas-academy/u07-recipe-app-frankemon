@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { RecipeService } from '../recipe.service';
+import { SavedRecipeService } from '../saved-recipe.service';
 import { Recipe } from '../recipe';
 
 @Component({
@@ -12,12 +13,14 @@ import { Recipe } from '../recipe';
 })
 export class RecipeDetailComponent implements OnInit {
   @Input() recipe?: Recipe;
+  savedRecipes: Recipe[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService,
+    public savedRecipeService: SavedRecipeService,
     private location: Location
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getRecipe();
@@ -29,6 +32,7 @@ export class RecipeDetailComponent implements OnInit {
       .getRecipe(id)
       .subscribe((recipe) => (this.recipe = recipe));
   }
+
   goBack(): void {
     this.location.back();
   }

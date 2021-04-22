@@ -33,6 +33,7 @@ export class RecipesComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipes();
   }
+
   // Gets recipes, prints them out according to filter options
   getRecipes(): void {
     this.recipeService.getRecipes().subscribe((recipes) => {
