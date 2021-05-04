@@ -13,5 +13,5 @@ export interface Recipe {
   dishTypes: string[];
   instructions: string;
   diet: string;
-  displaySave: boolean;
+  favorite: boolean;
 }

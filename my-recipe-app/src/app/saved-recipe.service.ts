@@ -8,8 +8,6 @@ import { RecipesComponent } from './recipes/recipes.component';
 export class SavedRecipeService {
   savedRecipes: Recipe[] = [];
 
-  displaySave = true;
-
   selectedButton: any;
 
   // savedRecipeCheck = true;
@@ -19,11 +17,26 @@ export class SavedRecipeService {
   saveRecipe(recipe: Recipe) {
     this.selectedButton = this.savedRecipes;
     this.savedRecipes.push(recipe);
-    this.displaySave = false;
+    recipe.favorite = true;
   }
 
-  deleteRecipe(i: any): void {
-    this.savedRecipes.splice(i, 1);
+  toggleFavorite(recipe: Recipe) {
+    const foundRecipe = this.savedRecipes.find((r) => r.id === recipe.id);
+    if (!foundRecipe) {
+      this.saveRecipe(recipe);
+    } else {
+      this.deleteRecipe(recipe);
+    }
+  }
+
+  deleteRecipe(recipe: Recipe): void {
+    recipe.favorite = false;
+    const foundRecipeIndex = this.savedRecipes.findIndex(
+      (r) => r.id === recipe.id
+    );
+    if (foundRecipeIndex > -1) {
+      this.savedRecipes.splice(foundRecipeIndex, 1);
+    }
   }
 
   getSavedRecipes() {

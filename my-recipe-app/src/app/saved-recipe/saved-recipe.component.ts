@@ -16,7 +16,7 @@ export class SavedRecipeComponent implements OnInit {
     this.recipesList = this.savedRecipeService.getSavedRecipes();
   }
 
-  removeRecipe(e: number): void {
-    this.savedRecipeService.deleteRecipe(e);
+  removeRecipe(recipe: Recipe): void {
+    this.savedRecipeService.deleteRecipe(recipe);
   }
 }
