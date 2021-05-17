@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth.interceptor';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,6 +16,7 @@ import { SavedRecipeComponent } from './saved-recipe/saved-recipe.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // const routes: Routes = [];
 
@@ -31,9 +33,22 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
+    HttpClientModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
