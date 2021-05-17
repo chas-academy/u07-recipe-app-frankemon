@@ -12,6 +12,9 @@ import { MessagesComponent } from './messages/messages.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SavedRecipeComponent } from './saved-recipe/saved-recipe.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 // const routes: Routes = [];
 
@@ -25,6 +28,9 @@ import { SavedRecipeComponent } from './saved-recipe/saved-recipe.component';
     HeaderComponent,
     FooterComponent,
     SavedRecipeComponent,
+    SigninComponent,
+    SignupComponent,
+    UserProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
