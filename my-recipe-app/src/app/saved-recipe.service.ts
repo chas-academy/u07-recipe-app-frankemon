@@ -7,7 +7,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 })
 export class SavedRecipeService {
   savedRecipes: Recipe[] = [];
-
+  favorite: Recipe;
   selectedButton: any;
 
   // savedRecipeCheck = true;

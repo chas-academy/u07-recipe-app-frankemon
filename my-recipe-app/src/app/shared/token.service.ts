@@ -20,18 +20,31 @@ export class TokenService {
   }
 
   // Verify the token
+  // isValidToken() {
+  //   const token = this.getToken();
+
+  //   if (token) {
+  //     const payload = this.payload(token);
+  //     if (payload) {
+  //       return Object.values(this.issuer).indexOf(payload.iss) > -1
+  //         ? true
+  //         : false;
+  //     }
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   isValidToken() {
     const token = this.getToken();
-
     if (token) {
       const payload = this.payload(token);
       if (payload) {
-        return Object.values(this.issuer).indexOf(payload.iss) > -1
-          ? true
-          : false;
+        const apiStrings = Object.values(this.issuer).map((apiString) =>
+          apiString.slice(-10)
+        );
+        return apiStrings.indexOf(payload.iss.slice(-10)) > -1 ? true : false;
       }
-    } else {
-      return false;
     }
   }
 
