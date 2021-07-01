@@ -33,7 +33,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
-    HttpClientModule,
   ],
   imports: [
     BrowserModule,
