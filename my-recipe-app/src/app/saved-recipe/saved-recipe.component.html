@@ -1,5 +1,6 @@
 <div class="bg-gray-100 my-2 p-2 border rounded-lg min-w-min shadow-xl">
-    <h1 class="text-xl">Your saved recipes:</h1>
+    <h1>Welcome back <br><span class="text-3xl">Dynamic User</span></h1>
+    <h2 class="text-xl mt-2">Your saved recipes:</h2>
     <section class="savedRecipes">
         <!-- <div *ngIf="savedRecipeService.savedRecipeCheck; else showNoSavedRecipes"> -->
         <div class="allRecipes-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
@@ -8,7 +9,7 @@
                     <div class="recipe-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
                         <a routerLink="/detail/{{recipe.id}}">
                             <h2 class="text-xl pb-2">{{recipe.title}}</h2>
-                            <img class="rounded-lg" src="{{recipe.image}}" alt="">
+                            <img class="rounded-lg" src="{{recipe.image}}" alt="An image of {{recipe.title}}">
                         </a>
                         <ul class="recipe-info-list">
                             <li class="recipe-servings pt-2"><span class="font-bold">Servings:

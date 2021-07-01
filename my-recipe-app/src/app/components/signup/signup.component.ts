@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../../shared/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { TokenService } from 'src/app/shared/token.service';
+import { AuthStateService } from 'src/app/shared/auth-state.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,8 +17,11 @@ export class SignupComponent implements OnInit {
   constructor(
     public router: Router,
     public fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private token: TokenService,
+    private authState: AuthStateService
   ) {
+    // Sets fields to blank
     this.registerForm = this.fb.group({
       name: [''],
       email: [''],
@@ -27,18 +32,22 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {}
 
+  // Submits and resets the form
   onSubmit() {
     this.authService.register(this.registerForm.value).subscribe(
-      (result) => {
-        console.log(result);
-      },
+      (result) => result,
+      // {console.log(result);}
       (error) => {
         this.errors = error.error;
       },
       () => {
         this.registerForm.reset();
-        this.router.navigate(['login']);
+        this.router.navigate(['signin']);
       }
     );
+  }
+
+  responseHandler(data) {
+    this.token.handleData(data.access_token);
   }
 }

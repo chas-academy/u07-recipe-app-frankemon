@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
     private token: TokenService,
     private authState: AuthStateService
   ) {
+    // User email and password stored here
     this.loginForm = this.fb.group({
       email: [],
       password: [],
@@ -29,6 +30,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {}
 
+  // Submits and resets the form, calls authService
   onSubmit() {
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
@@ -40,7 +42,7 @@ export class SigninComponent implements OnInit {
       () => {
         this.authState.setAuthState(true);
         this.loginForm.reset();
-        this.router.navigate(['profile']);
+        this.router.navigate(['saved-recipes']);
       }
     );
   }

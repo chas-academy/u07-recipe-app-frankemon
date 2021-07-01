@@ -1,7 +1,7 @@
 <div *ngIf="recipe">
     <div class="bg-gray-100 my-2 p-2 border rounded-lg min-w-min shadow-xl">
         <h1 class="text-xl pb-2">{{recipe.title}}</h1>
-        <img class="rounded-lg pb-2" src="{{recipe.image}}" alt="recipe-image">
+        <img class="rounded-lg pb-2" src="{{recipe.image}}" alt="An image of {{recipe.title}}">
         <p class="pb-2" [innerHTML]='recipe.summary'></p>
         <p class="pb-2"><span class="font-bold">Meal type: </span>{{recipe.dishTypes}}</p>
         <ul class="recipe-info-list py-2">
