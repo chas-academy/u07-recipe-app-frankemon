@@ -31,7 +31,7 @@
       </li>
     </ul>
   </nav>
-  <button
+  <button *ngIf="isSignedIn" (click)="signOut()"
     class="float-right bg-transparent hover:bg-red-500 text-red-600 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">
     Log Out
   </button>
