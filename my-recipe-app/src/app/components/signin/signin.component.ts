@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
 
   // Submits and resets the form, calls authService
   onSubmit() {
-    this.authService.signin(this.loginForm.value).subscribe(
+    this.authService.login(this.loginForm.value).subscribe(
       (result) => {
         this.responseHandler(result);
       },

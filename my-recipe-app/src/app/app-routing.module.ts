@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', component: LandingpageComponent, pathMatch: 'full' },
   { path: 'landingpage', component: LandingpageComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'signin', component: SigninComponent },
+  { path: 'login', component: SigninComponent },
   { path: 'start', component: DashboardComponent },
   { path: 'detail/:id', component: RecipeDetailComponent },
   { path: 'recipes', component: RecipesComponent },

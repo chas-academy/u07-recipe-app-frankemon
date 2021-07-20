@@ -18,11 +18,11 @@ export class AuthService {
 
   // User registration
   register(user: User): Observable<any> {
-    return this.http.post('http://127.0.0.1:80/api/auth/register', user);
+    return this.http.post('http://127.0.0.1:80/api/auth/signup', user);
   }
 
   // Login
-  signin(user: User): Observable<any> {
+  login(user: User): Observable<any> {
     return this.http.post<any>('http://127.0.0.1:80/api/auth/login', user);
   }
 
