@@ -1,9 +1,11 @@
 <!-- modal start -->
-<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+<div @modalContainer *ngIf="(modalState$ | async) === true" class="fixed z-10 inset-0 overflow-y-auto"
+    aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-        <div class="fixed inset-0 bg-blue-50 bg-opacity-25 transition-opacity" aria-hidden="true"></div>
+        <div @modalOverlay (click)="onClose()" class="fixed inset-0 bg-blue-50 bg-opacity-25 transition-opacity"
+            aria-hidden="true"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true"></span>
-        <div
+        <div @modalContent
             class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div class="sm:flex sm:items-start">
@@ -25,11 +27,11 @@
             <div
                 class="modalActionContainer bg-blue-200 px-4 py-3 sm:px-10 sm:flex sm:flex-row-reverse justify-between">
                 <div class="modalButtonContainer">
-                    <button type="button"
+                    <button (click)="onClose()" type="button"
                         class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white border-red-500 hover:border-transparent sm:ml-3 sm:w-auto sm:text-sm">
                         Cancel
                     </button>
-                    <button type="button"
+                    <button (click)="onClose()" type="button"
                         class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 clear bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white border-green-500 hover:border-transparent sm:ml-3 sm:w-auto sm:text-sm">
                         Save
                     </button>
