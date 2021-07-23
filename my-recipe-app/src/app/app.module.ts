@@ -18,6 +18,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 // const routes: Routes = [];
 
@@ -35,6 +36,7 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
     SignupComponent,
     UserProfileComponent,
     LandingpageComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
