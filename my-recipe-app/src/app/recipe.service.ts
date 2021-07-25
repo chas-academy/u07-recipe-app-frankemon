@@ -8,7 +8,6 @@ import { Observable, of } from 'rxjs';
 import { Recipe } from './recipe';
 // import { Recipes } from './recipes';
 // import { RecipeDetail } from './recipe-detail';
-import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +18,7 @@ export class RecipeService {
   private spoonSuggestedUrl = `https://api.spoonacular.com/recipes/random?number=4&apiKey=${environment.API_KEY}`;
   private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=3&apiKey=${environment.API_KEY}`;
 
-  constructor(
-    private http: HttpClient,
-    private messageService: MessageService
-  ) {}
+  constructor(private http: HttpClient) {}
 
   /** GET recipes from the server */
   getFeaturedRecipe(): Observable<any> {
@@ -46,13 +42,9 @@ export class RecipeService {
   getRecipe(id: number): Observable<Recipe> {
     const url = `${this.spoonUrl}/${id}/information?apiKey=${environment.API_KEY}`;
     return this.http.get<Recipe>(url).pipe(
-      tap((_) => this.log(`fetched recipe id=${id}`)),
+      tap((_) => console.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
     );
-  }
-
-  private log(message: string) {
-    this.messageService.add(`RecipeService: ${message}`);
   }
 
   /**
@@ -67,7 +59,7 @@ export class RecipeService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      console.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

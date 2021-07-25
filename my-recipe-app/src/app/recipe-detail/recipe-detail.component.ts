@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { RecipeService } from '../recipe.service';
 import { SavedRecipeService } from '../saved-recipe.service';
 import { Recipe } from '../recipe';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -18,7 +19,8 @@ export class RecipeDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private recipeService: RecipeService,
     public savedRecipeService: SavedRecipeService,
-    private location: Location
+    private location: Location,
+    private modalService: ModalService
   ) {}
 
   ngOnInit(): void {
@@ -34,5 +36,10 @@ export class RecipeDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(recipe: Recipe) {
+    this.savedRecipeService.saveRecipe(recipe);
+    this.modalService.open();
   }
 }

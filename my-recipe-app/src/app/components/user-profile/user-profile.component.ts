@@ -13,11 +13,12 @@ export class User {
   styleUrls: ['./user-profile.component.sass'],
 })
 export class UserProfileComponent implements OnInit {
-  UserProfile: User;
+  user: User;
 
   constructor(public authService: AuthService) {
     this.authService.profileUser().subscribe((data: any) => {
-      this.UserProfile = data;
+      console.log(data);
+      this.user = data;
     });
   }
 

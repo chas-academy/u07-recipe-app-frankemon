@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {
   trigger,
   transition,
@@ -11,7 +11,7 @@ import {
 } from '@angular/animations';
 import { fromEvent, Subject } from 'rxjs';
 import { filter, take, takeUntil, withLatestFrom } from 'rxjs/operators';
-import { LayoutFacade } from '../../+state/layout.facade';
+import { ModalService } from 'src/app/modal.service';
 
 @Component({
   selector: 'app-modal',
@@ -77,34 +77,24 @@ import { LayoutFacade } from '../../+state/layout.facade';
   ],
 })
 export class ModalComponent implements OnInit {
-  modalState$ = this.layoutFacade.modalState$;
+  isOpen = false;
 
-  constructor(private layoutFacade: LayoutFacade) {}
-
-  private readonly unsubscribe$ = new Subject();
+  constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
-    this.modalState$.pipe(take(1)).subscribe((isOpen) => {
-      if (!isOpen) {
-        this.layoutFacade.openModal();
-      }
-    });
-    fromEvent(document, 'keydown')
-      .pipe(
-        takeUntil(this.unsubscribe$),
-        filter(
-          (event) => event instanceof KeyboardEvent && event.code === 'Escape'
-        ),
-        withLatestFrom(this.modalState$)
-      )
-      .subscribe(([_, modalIsOpen]) => {
-        if (modalIsOpen) {
-          this.layoutFacade.closeModal();
-        }
-      });
+    this.modalService.isOpen.subscribe((isOpen) => this.change(isOpen));
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  onKeydown(event: any) {
+    this.onClose();
   }
 
   onClose(): void {
-    this.layoutFacade.closeModal();
+    this.modalService.close();
+  }
+
+  change(isOpen: boolean) {
+    this.isOpen = isOpen;
   }
 }

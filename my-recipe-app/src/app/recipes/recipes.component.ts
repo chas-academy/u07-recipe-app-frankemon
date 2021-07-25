@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Recipe } from '../recipe';
 import { RecipeService } from '../recipe.service';
-import { MessageService } from '../message.service';
 import { SavedRecipeService } from '../saved-recipe.service';
 import { filter } from 'rxjs/operators';
 
@@ -22,7 +21,6 @@ export class RecipesComponent implements OnInit {
 
   constructor(
     public recipeService: RecipeService,
-    private messageService: MessageService,
     public savedRecipeService: SavedRecipeService
   ) {}
 
