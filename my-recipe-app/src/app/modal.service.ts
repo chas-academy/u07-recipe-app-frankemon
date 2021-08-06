@@ -20,4 +20,8 @@ export class ModalService {
   }
 
   constructor() {}
+
+  addRecipe() {
+    //
+  }
 }

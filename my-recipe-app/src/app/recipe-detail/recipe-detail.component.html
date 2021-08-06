@@ -8,7 +8,7 @@
             <li class="recipe-servings pb-2"><span class="font-bold">Servings: </span>{{recipe.servings}}</li>
             <li class="recipe-time pb-2"><span class="font-bold">Cook Time: </span>{{recipe.readyInMinutes}}min</li>
         </ul>
-        <ng-container *ngIf="savedRecipeService.favorite; then showSave; else showRemove">
+        <ng-container *ngIf="!savedRecipeService.favorite; then showSave; else showRemove">
         </ng-container>
         <ng-template #showSave>
             <div>

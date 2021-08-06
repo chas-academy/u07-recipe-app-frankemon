@@ -78,6 +78,7 @@ import { ModalService } from 'src/app/modal.service';
 })
 export class ModalComponent implements OnInit {
   isOpen = false;
+  // listTitle: string;
 
   constructor(private modalService: ModalService) {}
 
@@ -96,5 +97,9 @@ export class ModalComponent implements OnInit {
 
   change(isOpen: boolean) {
     this.isOpen = isOpen;
+  }
+
+  addRecipe(): void {
+    this.modalService.addRecipe();
   }
 }
