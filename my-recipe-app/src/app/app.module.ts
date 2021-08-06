@@ -21,6 +21,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { LandingpageComponent } from './components/landingpage/landingpage.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalService } from './modal.service';
+import { NewListComponent } from './components/new-list/new-list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ModalService } from './modal.service';
     UserProfileComponent,
     LandingpageComponent,
     ModalComponent,
+    NewListComponent,
   ],
   imports: [
     BrowserModule,
