@@ -11,7 +11,9 @@ import {
 } from '@angular/animations';
 import { fromEvent, Subject } from 'rxjs';
 import { filter, take, takeUntil, withLatestFrom } from 'rxjs/operators';
-import { ModalService } from 'src/app/modal.service';
+// import { ModalService } from 'src/app/modal.service';
+import { ModalService } from '../../modal.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-modal',
@@ -78,9 +80,13 @@ import { ModalService } from 'src/app/modal.service';
 })
 export class ModalComponent implements OnInit {
   isOpen = false;
-  // listTitle: string;
+  lists: any;
+  currentList: any;
 
-  constructor(private modalService: ModalService) {}
+  constructor(
+    private modalService: ModalService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.modalService.isOpen.subscribe((isOpen) => this.change(isOpen));
@@ -97,9 +103,23 @@ export class ModalComponent implements OnInit {
 
   change(isOpen: boolean) {
     this.isOpen = isOpen;
+    if (isOpen) {
+      this.onOpen();
+    }
   }
 
-  addRecipe(): void {
-    this.modalService.addRecipe();
+  addRecipe(recipe): void {
+    this.modalService.addRecipe(recipe);
+  }
+
+  onOpen() {
+    this.userService.getLists().subscribe((lists) => {
+      this.lists = lists;
+      this.currentList = lists[0];
+    }); // Gets users lists on open
+  }
+
+  handleSelect() {
+    console.log(this.currentList);
   }
 }

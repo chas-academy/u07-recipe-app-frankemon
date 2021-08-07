@@ -8,17 +8,15 @@ import { UserService } from '../../user.service';
   styleUrls: ['./new-list.component.sass'],
 })
 export class NewListComponent implements OnInit {
-  list_title: string;
-  lists: List[];
-  createList;
-  title;
+  title: string;
+  listName: string;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
-  handleCreateList(title) {
-    this.userService.createList(title);
+  handleCreateList(listName) {
+    this.userService.createList(listName);
   }
 
   handleShowLists() {

@@ -1,2 +1,6 @@
-<h1>Welcome back <br><span class="text-3xl">{{ user?.name }}</span></h1>
-<!-- add "loading" type of text for async wait time -->
+<div *ngIf="user!=null; ">
+    <h1>Welcome back <br><span class="text-3xl">{{ user?.name }}</span></h1>
+</div>
+<div *ngIf="user==null;">
+    Loading...
+</div>

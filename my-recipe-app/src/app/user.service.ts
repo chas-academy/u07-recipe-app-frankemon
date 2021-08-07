@@ -21,35 +21,25 @@ export class UserService {
     return fetchData;
   }
 
-  getLists(): Observable<any> {
-    const fetchData = this.getFetchData({ Authorization: this.authHeader });
-    return this.http.get(`${this.url}/show-lists`, fetchData);
-  }
+  createList(listName: string) {
+    console.log('Create list button connected', listName);
+    const formData = new FormData();
 
-  createList(title) {
-    const fetchData = this.getFetchData({
-      Authorization: this.authHeader,
-      'Content-Type': this.contentType,
-    });
-    const request = this.http.post(`${this.url}/create-list`, title, fetchData);
-    request.subscribe((message) => message);
-  }
+    formData.append('list_title', listName);
 
-  removeList(id) {
-    const fetchData = this.getFetchData({
-      Authorization: this.authHeader,
-      'Content-Type': this.contentType,
-    });
-    const request = this.http.delete(
-      `${this.url}/remove-list/${id}`,
-      fetchData
+    const newList = this.http.post(`${this.url}/create-list/`, formData);
+    newList.subscribe(
+      (message) => console.log(message),
+      (error) => console.log(error)
     );
-    request.subscribe((message) => message);
+  }
+
+  getLists() {
+    const showLists = this.http.get(`${this.url}/show-lists/`);
+    return showLists;
+    // showLists.subscribe(
+    //   (message) => console.log(message),
+    //   (error) => console.log(error)
+    // );
   }
 }
-
-// return this.http.post(
-//   'http://127.0.0.1:8000/api/auth/create-list',
-//   list_title,
-//   fetchData
-// );
