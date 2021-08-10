@@ -8,7 +8,6 @@ import { UserService } from '../../user.service';
   styleUrls: ['./new-list.component.sass'],
 })
 export class NewListComponent implements OnInit {
-  title: string;
   listName: string;
 
   constructor(private userService: UserService) {}
@@ -22,17 +21,4 @@ export class NewListComponent implements OnInit {
   handleShowLists() {
     this.userService.getLists();
   }
-
-  // onSubmit() {
-  //   if (!this.list_title) {
-  //     alert('Please name your list first.');
-  //     return;
-  //   }
-
-  //   const newList = {
-  //     list_title: this.list_title,
-  //   };
-
-  //   this.list_title = '';
-  // }
 }

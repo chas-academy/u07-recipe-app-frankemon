@@ -18,6 +18,8 @@ export class RecipeService {
   private spoonSuggestedUrl = `https://api.spoonacular.com/recipes/random?number=4&apiKey=${environment.API_KEY}`;
   private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=3&apiKey=${environment.API_KEY}`;
 
+  // private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/informationBulk?ids=646905,646905&apiKey=${environment.API_KEY}`;
+
   constructor(private http: HttpClient) {}
 
   /** GET recipes from the server */

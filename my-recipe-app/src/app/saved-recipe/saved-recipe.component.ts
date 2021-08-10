@@ -14,7 +14,6 @@ export class SavedRecipeComponent implements OnInit {
   recipesList: any;
   User: User;
   lists: any; // Array of lists
-  // List: List;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
@@ -33,9 +32,5 @@ export class SavedRecipeComponent implements OnInit {
 
   handleGetLists() {
     this.userService.getLists().subscribe((lists) => (this.lists = lists));
-    // showLists.subscribe(
-    //   (message) => console.log(message),
-    //   (error) => console.log(error)
-    // );
   }
 }

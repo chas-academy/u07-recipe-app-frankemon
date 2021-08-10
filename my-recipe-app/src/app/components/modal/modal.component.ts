@@ -14,6 +14,10 @@ import { filter, take, takeUntil, withLatestFrom } from 'rxjs/operators';
 // import { ModalService } from 'src/app/modal.service';
 import { ModalService } from '../../modal.service';
 import { UserService } from '../../user.service';
+import { Recipe } from 'src/app/recipe';
+import { RecipeDetailComponent } from 'src/app/recipe-detail/recipe-detail.component';
+import { SavedRecipeComponent } from 'src/app/saved-recipe/saved-recipe.component';
+import { RecipeService } from 'src/app/recipe.service';
 
 @Component({
   selector: 'app-modal',
@@ -82,14 +86,21 @@ export class ModalComponent implements OnInit {
   isOpen = false;
   lists: any;
   currentList: any;
+  recipeId: any;
+  id: any;
+  recipe: any;
+  title: any;
+  // recipeData: any = this.modalService.getRecipeData();
 
   constructor(
     private modalService: ModalService,
-    private userService: UserService
+    private userService: UserService,
+    private recipeService: RecipeService
   ) {}
 
   ngOnInit(): void {
     this.modalService.isOpen.subscribe((isOpen) => this.change(isOpen));
+    // this.modalService.getRecipeData();
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -104,7 +115,7 @@ export class ModalComponent implements OnInit {
   change(isOpen: boolean) {
     this.isOpen = isOpen;
     if (isOpen) {
-      this.onOpen();
+      this.onOpen(this.recipe);
     }
   }
 
@@ -112,11 +123,13 @@ export class ModalComponent implements OnInit {
     this.modalService.addRecipe(recipe);
   }
 
-  onOpen() {
+  // Gets users lists on open
+  onOpen(recipe) {
     this.userService.getLists().subscribe((lists) => {
       this.lists = lists;
       this.currentList = lists[0];
-    }); // Gets users lists on open
+      console.log(recipe);
+    });
   }
 
   handleSelect() {

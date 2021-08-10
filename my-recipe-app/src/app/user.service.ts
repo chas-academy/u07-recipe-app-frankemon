@@ -35,11 +35,7 @@ export class UserService {
   }
 
   getLists() {
-    const showLists = this.http.get(`${this.url}/show-lists/`);
+    const showLists = this.http.get(`${this.url}/show-lists`);
     return showLists;
-    // showLists.subscribe(
-    //   (message) => console.log(message),
-    //   (error) => console.log(error)
-    // );
   }
 }
