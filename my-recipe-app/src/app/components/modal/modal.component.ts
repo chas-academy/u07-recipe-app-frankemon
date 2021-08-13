@@ -99,8 +99,7 @@ export class ModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.modalService.isOpen.subscribe((isOpen) => this.change(isOpen));
-    // this.modalService.getRecipeData();
+    this.modalService.isOpen.subscribe((recipe) => this.change(recipe));
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -112,23 +111,23 @@ export class ModalComponent implements OnInit {
     this.modalService.close();
   }
 
-  change(isOpen: boolean) {
-    this.isOpen = isOpen;
-    if (isOpen) {
-      this.onOpen(this.recipe);
+  change(recipe: Recipe) {
+    this.isOpen = recipe != null;
+    this.recipe = recipe;
+    if (recipe) {
+      this.onOpen();
     }
   }
 
-  addRecipe(recipe): void {
-    this.modalService.addRecipe(recipe);
+  addRecipe(listId): void {
+    this.modalService.addRecipe(this.recipe.id, listId);
   }
 
   // Gets users lists on open
-  onOpen(recipe) {
+  onOpen() {
     this.userService.getLists().subscribe((lists) => {
       this.lists = lists;
       this.currentList = lists[0];
-      console.log(recipe);
     });
   }
 

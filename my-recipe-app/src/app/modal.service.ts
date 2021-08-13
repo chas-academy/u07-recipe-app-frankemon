@@ -22,36 +22,28 @@ export class ModalService {
   contentType = 'application/json';
 
   lists: any; // Array of lists
-  recipe: Recipe;
-  // recipeData: [any, any];
-  // recipeData: ListItem;
-  // recipeData: ListItem[] = [];
-  recipeData: any;
 
-  isOpen: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  isOpen: BehaviorSubject<Recipe> = new BehaviorSubject(null);
 
   // open(recipeId) {  can either pass id or title. bonus points for link, maybe use data behavioursubject
   open(recipe) {
-    // this.recipeId.next(recipeId);
-    this.isOpen.next(true);
-    console.log('open');
-    this.recipeData = recipe;
-    console.log(this.recipeData);
+    this.isOpen.next(recipe);
+    console.log('open', recipe);
   }
 
-  // getRecipeData() {
-  //   console.log(this.recipeData);
-  //   return this.recipeData;
-  // }
-
   close() {
-    this.isOpen.next(false);
+    this.isOpen.next(null);
     console.log('close');
   }
 
-  addRecipe(recipeData) {
-    const saveRecipe = this.http.post(`${this.url}/add-recipe/`, recipeData);
-    console.log(saveRecipe, recipeData);
+  addRecipe(recipeId, listId) {
+    const formData = new FormData();
+
+    formData.append('list_id', listId);
+    formData.append('recipe_id', recipeId);
+
+    const saveRecipe = this.http.post(`${this.url}/save-to-list`, formData);
+    console.log(listId, recipeId);
     saveRecipe.subscribe(
       (message) => console.log(message),
       (error) => console.log(error)
