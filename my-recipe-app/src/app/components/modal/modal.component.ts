@@ -119,8 +119,8 @@ export class ModalComponent implements OnInit {
     }
   }
 
-  addRecipe(listId): void {
-    this.modalService.addRecipe(this.recipe.id, listId);
+  handleAddRecipe(listId, recipe): void {
+    this.modalService.addRecipe(this.recipe.id, listId, recipe);
   }
 
   // Gets users lists on open

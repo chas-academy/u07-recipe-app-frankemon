@@ -25,7 +25,6 @@ export class ModalService {
 
   isOpen: BehaviorSubject<Recipe> = new BehaviorSubject(null);
 
-  // open(recipeId) {  can either pass id or title. bonus points for link, maybe use data behavioursubject
   open(recipe) {
     this.isOpen.next(recipe);
     console.log('open', recipe);
@@ -36,34 +35,26 @@ export class ModalService {
     console.log('close');
   }
 
-  addRecipe(recipeId, listId) {
+  addRecipe(recipeId, listId, recipe) {
     const formData = new FormData();
 
     formData.append('list_id', listId);
     formData.append('recipe_id', recipeId);
 
-    const saveRecipe = this.http.post(`${this.url}/save-to-list`, formData);
-    console.log(listId, recipeId);
-    saveRecipe.subscribe(
+    const saveToConnect = this.http.post(`${this.url}/save-to-list`, formData);
+    console.log(recipeId, listId);
+    saveToConnect.subscribe(
+      (message) => console.log(message),
+      (error) => console.log(error)
+    );
+
+    formData.append('title', recipe.title);
+    formData.append('spoonacular_id', recipeId);
+    const addRecipe = this.http.post(`${this.url}/add-recipe`, formData);
+    console.log(recipeId, listId);
+    addRecipe.subscribe(
       (message) => console.log(message),
       (error) => console.log(error)
     );
   }
-
-  // addRecipe(recipe) {
-  //   console.log('Create list button connected', recipe);
-  //   const formData = new FormData();
-
-  //   formData.append('id', recipe);
-
-  //   const addRecipe = this.http.post(
-  //     `${this.url}/add-recipe/`,
-  //     formData,
-  //     recipe
-  //   );
-  //   addRecipe.subscribe(
-  //     (message) => console.log(message),
-  //     (error) => console.log(error)
-  //   );
-  // }
 }
