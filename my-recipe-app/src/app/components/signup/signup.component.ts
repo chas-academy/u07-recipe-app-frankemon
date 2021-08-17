@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
       },
       () => {
         this.registerForm.reset();
-        this.router.navigate(['signin']);
+        this.router.navigate(['/login']);
       }
     );
   }

@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { List } from './List';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import environment from '../environments/environment';
+import { NewListComponent } from './components/new-list/new-list.component';
 
 @Injectable({
   providedIn: 'root',
@@ -38,4 +39,17 @@ export class UserService {
     const showLists = this.http.get(`${this.url}/show-lists`);
     return showLists;
   }
+
+  getSavedRecipes() {
+    // const savedRecipes = this.http.get(`${this.url}/show-recipes/{id}`);
+    const savedRecipes = this.http.get(`${this.url}/get-list-recipes/{id}`);
+    console.log(savedRecipes);
+    return savedRecipes;
+  }
+
+  // getSpoonId(listId) {
+  //   const spoonId = this.http.get(`${this.url}/get-connectors/${listId}`);
+  //   console.log(listId, spoonId);
+  //   return spoonId;
+  // }
 }

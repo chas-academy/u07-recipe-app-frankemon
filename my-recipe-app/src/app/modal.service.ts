@@ -39,22 +39,24 @@ export class ModalService {
     const formData = new FormData();
 
     formData.append('list_id', listId);
-    formData.append('recipe_id', recipeId);
+    // formData.append('recipe_id', recipeId);
+    formData.append('title', recipe.title);
+    formData.append('spoonacular_id', recipeId);
 
     const saveToConnect = this.http.post(`${this.url}/save-to-list`, formData);
-    console.log(recipeId, listId);
+    console.log(recipe.title, recipeId, listId);
     saveToConnect.subscribe(
       (message) => console.log(message),
       (error) => console.log(error)
     );
 
-    formData.append('title', recipe.title);
-    formData.append('spoonacular_id', recipeId);
-    const addRecipe = this.http.post(`${this.url}/add-recipe`, formData);
-    console.log(recipeId, listId);
-    addRecipe.subscribe(
-      (message) => console.log(message),
-      (error) => console.log(error)
-    );
+    // formData.append('title', recipe.title);
+    // formData.append('spoonacular_id', recipeId);
+    // const addRecipe = this.http.post(`${this.url}/add-recipe`, formData);
+    // console.log(recipeId, listId);
+    // addRecipe.subscribe(
+    //   (message) => console.log(message),
+    //   (error) => console.log(error)
+    // );
   }
 }

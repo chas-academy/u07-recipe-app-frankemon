@@ -14,12 +14,20 @@ export class SavedRecipeComponent implements OnInit {
   recipesList: any;
   User: User;
   lists: any; // Array of lists
+  recipes: any;
+  spoonId: any;
+  recipe_ids: any;
+  listId: any;
+  results: any;
+  result: any;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
     private userService: UserService
   ) {
     this.handleGetLists();
+    this.handleGetSavedRecipes();
+    // this.handleGetSpoonId(this.listId);
   }
 
   ngOnInit(): void {
@@ -32,5 +40,18 @@ export class SavedRecipeComponent implements OnInit {
 
   handleGetLists() {
     this.userService.getLists().subscribe((lists) => (this.lists = lists));
+    // this.listId = lists.id;
   }
+
+  handleGetSavedRecipes() {
+    this.userService
+      .getSavedRecipes()
+      .subscribe((recipes) => (this.recipes = recipes));
+  }
+
+  // handleGetSpoonId(listId) {
+  //   this.userService
+  //     .getSpoonId(listId)
+  //     .subscribe((spoonId) => (this.spoonId = spoonId));
+  // }
 }
