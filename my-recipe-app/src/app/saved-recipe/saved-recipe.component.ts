@@ -46,16 +46,21 @@ export class SavedRecipeComponent implements OnInit {
     this.savedRecipeService.deleteRecipe(recipe);
   }
 
+  handleListClick(id) {
+    this.userService.getListRecipes(id);
+    console.log('handleListClick', id, this.lists);
+  }
+
   handleGetLists() {
     this.userService.getLists().subscribe((lists) => (this.lists = lists));
     // this.listId = lists.id;
   }
 
-  handleGetSavedRecipes() {
-    this.userService
-      .getListRecipes()
-      .subscribe((recipes) => (this.recipes = recipes));
-  }
+  // handleGetSavedRecipes() {
+  //   this.userService
+  //     .getListRecipes()
+  //     .subscribe((recipes) => (this.recipes = recipes));
+  // }
 
   // handleGetSpoonId(listId) {
   //   this.userService

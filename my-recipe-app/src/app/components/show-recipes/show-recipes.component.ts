@@ -12,25 +12,31 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class ShowRecipesComponent implements OnInit {
   faTimes = faTimes;
+  listRecipes: any = [];
+  id: any;
+  savedRecipes: any;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private userService: UserService
   ) {
-    this.handleGetListRecipes();
+    // this.handleGetListRecipes(this.id);
+    // console.log(this.listRecipes);
   }
-  listRecipes: any;
-  id: any;
-  savedRecipes: any;
-  ngOnInit(): void {}
 
-  handleGetListRecipes() {
-    // const id = this.route.snapshot.params['id'];
-    this.userService
-      .getListRecipes()
-      .subscribe((listRecipes) => (this.listRecipes = listRecipes));
+  ngOnInit(): void {
+    // this.listRecipes = this.handleGetListRecipes(this.id);
+    this.listRecipes = this.userService.getListRecipes(this.id);
     console.log(this.listRecipes);
-    return this.listRecipes;
   }
+
+  // handleGetListRecipes(id) {
+  //   // const id = this.route.snapshot.params['id'];
+  //   this.userService
+  //     .getListRecipes(id)
+  //     .subscribe((listRecipes) => (this.listRecipes = listRecipes));
+  //   // console.log(this.listRecipes);
+  //   return this.listRecipes;
+  // }
 }
