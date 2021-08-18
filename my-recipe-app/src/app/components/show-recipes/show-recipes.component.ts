@@ -27,8 +27,22 @@ export class ShowRecipesComponent implements OnInit {
 
   ngOnInit(): void {
     // this.listRecipes = this.handleGetListRecipes(this.id);
-    this.listRecipes = this.userService.getListRecipes(this.id);
-    console.log(this.listRecipes);
+    // this.listRecipes = this.userService.getListRecipes(this.id);
+
+    this.route.params.subscribe((params) => {
+      this.getListRecipes(params['id']);
+      console.log(params); //log the entire params object
+      console.log(params['id']); //log the value of id
+    });
+    // console.log(this.listRecipes);
+  }
+
+  getListRecipes(id) {
+    this.userService.getListRecipes(id).subscribe((data) => {
+      this.listRecipes = Object.entries(data).map((e) => e[1]);
+      console.log(Object.entries(data).map((e) => e[1]));
+    });
+    // console.log('handleListClick', id, this.lists, this.listRecipes);
   }
 
   // handleGetListRecipes(id) {
@@ -39,4 +53,8 @@ export class ShowRecipesComponent implements OnInit {
   //   // console.log(this.listRecipes);
   //   return this.listRecipes;
   // }
+
+  deleteRecipe(id) {
+    this.userService.deleteRecipe(id).subscribe(() => this.deleteRecipe(id));
+  }
 }

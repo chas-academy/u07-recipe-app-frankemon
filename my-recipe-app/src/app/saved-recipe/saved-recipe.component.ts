@@ -24,6 +24,8 @@ export class SavedRecipeComponent implements OnInit {
   result: any;
   id: any;
   faTimes = faTimes;
+  listRecipes: any;
+  isLoading: boolean = false;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
@@ -31,40 +33,35 @@ export class SavedRecipeComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.handleGetLists();
-    // this.handleGetSavedRecipes();
-    // this.handleGetSpoonId(this.listId);
   }
-  // this.route.params.subscribe((params) => {
-  //     this.id = params['id'];
-  //   });
 
-  ngOnInit(): void {
-    // this.recipesList = this.savedRecipeService.getSavedRecipes();
-  }
+  ngOnInit(): void {}
 
   removeRecipe(recipe: Recipe): void {
     this.savedRecipeService.deleteRecipe(recipe);
   }
 
-  handleListClick(id) {
-    this.userService.getListRecipes(id);
-    console.log('handleListClick', id, this.lists);
-  }
+  // handleListClick(id) {
+  //   this.userService.getListRecipes(id).subscribe((data) => {
+  //     this.listRecipes = data;
+  //   });
+  //   console.log('handleListClick', id, this.lists, this.listRecipes);
+  // }
 
   handleGetLists() {
-    this.userService.getLists().subscribe((lists) => (this.lists = lists));
-    // this.listId = lists.id;
+    this.isLoading = true;
+    this.userService.getLists().subscribe((lists) => {
+      this.isLoading = false;
+      this.lists = lists;
+    });
   }
 
-  // handleGetSavedRecipes() {
-  //   this.userService
-  //     .getListRecipes()
-  //     .subscribe((recipes) => (this.recipes = recipes));
-  // }
+  setIsLoading() {
+    this.isLoading = true;
+    console.log('hello');
+  }
 
-  // handleGetSpoonId(listId) {
-  //   this.userService
-  //     .getSpoonId(listId)
-  //     .subscribe((spoonId) => (this.spoonId = spoonId));
-  // }
+  deleteList(id) {
+    this.userService.deleteList(id).subscribe(() => this.handleGetLists());
+  }
 }

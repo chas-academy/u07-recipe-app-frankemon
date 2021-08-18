@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { List } from '../../List';
 import { UserService } from '../../user.service';
 
@@ -9,13 +9,18 @@ import { UserService } from '../../user.service';
 })
 export class NewListComponent implements OnInit {
   listName: string;
+  @Output() createdList = new EventEmitter();
+  @Output() handleIsLoading = new EventEmitter();
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
   handleCreateList(listName) {
-    this.userService.createList(listName);
+    this.handleIsLoading.emit();
+    this.userService
+      .createList(listName)
+      .subscribe(() => this.createdList.emit());
   }
 
   handleShowLists() {

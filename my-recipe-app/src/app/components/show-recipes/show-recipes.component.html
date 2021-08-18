@@ -3,9 +3,13 @@
     class="list-card-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
     <div class="list-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
         <p class="text-xl">Your saved recipes in this list:</p>
-        <!-- <ul *ngFor="let listRecipe of listRecipes">
-            <li>{{listRecipes.title}}</li>
-        </ul> -->
+        <ul *ngFor="let listRecipe of listRecipes">
+            <li>{{listRecipe.title}} <fa-icon (click)="deleteRecipe(listRecipe.id)" [ngStyle]="{'color': 'red'}"
+                    [icon]="faTimes"></fa-icon>
+            </li>
+        </ul>
+        <!-- <li>{{listRecipes | json}}</li> -->
+
         <!-- <p class="text-xl font-bold"><a routerLink="/detail/000000">{{ list.id }}: {{ list.list_title }}</a></p> -->
         <!-- <p class="text-xl font-bold"><a routerLink="/detail/000000">{{listRecipes.title}}</a></p> -->
         <p class="text-xl font-bold"><a routerLink="/detail/000000">Recipe 2</a>
