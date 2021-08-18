@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
 import { SavedRecipeService } from '../saved-recipe.service';
 import { User } from '../components/user-profile/user-profile.component';
-import { List } from '../List';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -16,21 +14,13 @@ export class SavedRecipeComponent implements OnInit {
   recipesList: any;
   User: User;
   lists: any; // Array of lists
-  recipes: any;
-  spoonId: any;
-  recipe_ids: any;
-  listId: any;
-  results: any;
-  result: any;
-  id: any;
   faTimes = faTimes;
   listRecipes: any;
   isLoading: boolean = false;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
-    private userService: UserService,
-    private route: ActivatedRoute
+    private userService: UserService
   ) {
     this.handleGetLists();
   }
@@ -40,13 +30,6 @@ export class SavedRecipeComponent implements OnInit {
   removeRecipe(recipe: Recipe): void {
     this.savedRecipeService.deleteRecipe(recipe);
   }
-
-  // handleListClick(id) {
-  //   this.userService.getListRecipes(id).subscribe((data) => {
-  //     this.listRecipes = data;
-  //   });
-  //   console.log('handleListClick', id, this.lists, this.listRecipes);
-  // }
 
   handleGetLists() {
     this.isLoading = true;
@@ -58,7 +41,6 @@ export class SavedRecipeComponent implements OnInit {
 
   setIsLoading() {
     this.isLoading = true;
-    console.log('hello');
   }
 
   deleteList(id) {

@@ -1,4 +1,3 @@
-<!-- modal start -->
 <div @modalContainer *ngIf="isOpen" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title"
     role="dialog" aria-modal="true">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -38,7 +37,7 @@
                 </div>
                 <div class="modalSelectorContainer ">
                     <div *ngIf="lists!=null; ">
-                        <select [(ngModel)]="currentList" (change)="handleSelect()">
+                        <select [(ngModel)]="currentList">
                             <option *ngFor="let list of lists" [ngValue]="list.id">{{ list.list_title }}</option>
                         </select>
                     </div>
@@ -50,4 +49,3 @@
         </div>
     </div>
 </div>
-<!-- modal end -->

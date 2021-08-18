@@ -39,8 +39,6 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   save(recipe) {
-    // this.savedRecipeService.saveRecipe(recipeId);
     this.modalService.open(recipe);
-    // console.log(recipe);
   }
 }

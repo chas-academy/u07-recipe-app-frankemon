@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from './recipe';
-import { RecipesComponent } from './recipes/recipes.component';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +8,6 @@ export class SavedRecipeService {
   savedRecipes: Recipe[] = [];
   favorite: Recipe;
   selectedButton: any;
-
-  // savedRecipeCheck = true;
 
   constructor() {}
 

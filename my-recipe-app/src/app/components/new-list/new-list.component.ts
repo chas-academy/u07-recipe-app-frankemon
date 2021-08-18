@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { List } from '../../List';
 import { UserService } from '../../user.service';
 
 @Component({
@@ -9,6 +8,7 @@ import { UserService } from '../../user.service';
 })
 export class NewListComponent implements OnInit {
   listName: string;
+  // Output for refreshing lists after creating new list
   @Output() createdList = new EventEmitter();
   @Output() handleIsLoading = new EventEmitter();
 
@@ -20,7 +20,7 @@ export class NewListComponent implements OnInit {
     this.handleIsLoading.emit();
     this.userService
       .createList(listName)
-      .subscribe(() => this.createdList.emit());
+      .subscribe(() => this.createdList.emit()); // Output for refreshing lists after creating new list
   }
 
   handleShowLists() {

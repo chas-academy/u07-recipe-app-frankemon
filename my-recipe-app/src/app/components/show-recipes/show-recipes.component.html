@@ -8,10 +8,6 @@
                     [icon]="faTimes"></fa-icon>
             </li>
         </ul>
-        <!-- <li>{{listRecipes | json}}</li> -->
-
-        <!-- <p class="text-xl font-bold"><a routerLink="/detail/000000">{{ list.id }}: {{ list.list_title }}</a></p> -->
-        <!-- <p class="text-xl font-bold"><a routerLink="/detail/000000">{{listRecipes.title}}</a></p> -->
         <p class="text-xl font-bold"><a routerLink="/detail/000000">Recipe 2</a>
             <fa-icon [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
         </p>
@@ -19,9 +15,6 @@
             <fa-icon [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
         </p>
     </div>
-
-    <!-- {{savedRecipes.title}} -->
-    <!-- *ngFor="let recipe of listRecipes" -->
 </div>
 <div *ngIf="listRecipes==null;">
     Loading...

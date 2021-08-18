@@ -34,7 +34,6 @@ export class RecipesComponent implements OnInit {
       this.recipes = recipes;
       this.filteredRecipes = recipes;
       this.filterDishType();
-      console.log(this.showAllRecipes);
     });
   }
   // Adds dishType as a filter type, combines with diet filter below so user can filter by diet AND dish type

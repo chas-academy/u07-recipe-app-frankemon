@@ -1,7 +1,6 @@
 <div class="bg-gray-100 my-2 p-2 border rounded-lg min-w-min shadow-xl">
     <app-user-profile></app-user-profile>
     <app-new-list (handleIsLoading)="setIsLoading()" (createdList)="handleGetLists()"></app-new-list>
-
     <h2 class="text-xl mt-2">Your recipe lists:</h2>
     <div *ngIf="!isLoading" class="list-card-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
         <div *ngFor="let list of lists" class="list-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
