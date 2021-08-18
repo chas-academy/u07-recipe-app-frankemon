@@ -4,12 +4,13 @@ import { List } from './List';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import environment from '../environments/environment';
 import { NewListComponent } from './components/new-list/new-list.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
   url = environment.API_URL;
   accessToken = localStorage.getItem('accessToken');
   authHeader = `Bearer ${this.accessToken}`;
@@ -37,19 +38,20 @@ export class UserService {
 
   getLists() {
     const showLists = this.http.get(`${this.url}/show-lists`);
+    console.log(showLists);
     return showLists;
   }
 
-  getSavedRecipes() {
-    // const savedRecipes = this.http.get(`${this.url}/show-recipes/{id}`);
-    const savedRecipes = this.http.get(`${this.url}/get-list-recipes/{id}`);
-    console.log(savedRecipes);
-    return savedRecipes;
+  getListRecipes() {
+    const id = this.route.snapshot.params['id'];
+    // const savedRecipes = this.http.get(`${this.url}/show-recipes/${id}`);
+    // return savedRecipes;
+    const listRecipes = this.http.get(`${this.url}/show-recipes/${id}`);
+    console.log(listRecipes);
+    return listRecipes;
   }
 
-  // getSpoonId(listId) {
-  //   const spoonId = this.http.get(`${this.url}/get-connectors/${listId}`);
-  //   console.log(listId, spoonId);
-  //   return spoonId;
+  // getListRecipes(): Observable<any> {
+  //   return this.http.get(`${this.url}/show-recipes/`);
   // }
 }

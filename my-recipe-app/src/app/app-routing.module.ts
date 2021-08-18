@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { SavedRecipeComponent } from './saved-recipe/saved-recipe.component';
+import { ShowRecipesComponent } from './components/show-recipes/show-recipes.component';
 // import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: RecipeDetailComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'saved-recipes', component: SavedRecipeComponent },
+  { path: 'list/:id', component: ShowRecipesComponent },
 ];
 
 @NgModule({

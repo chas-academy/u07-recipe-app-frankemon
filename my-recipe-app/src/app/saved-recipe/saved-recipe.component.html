@@ -3,20 +3,19 @@
     <app-new-list></app-new-list>
 
     <h2 class="text-xl mt-2">Your recipe lists:</h2>
-    <div class="list-card-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
-        <div>
-            <p>Test</p>
-            <div *ngFor="let result of results"> {{ result.title }}</div>
-        </div>
+    <div *ngIf="lists!=null;"
+        class="list-card-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
         <div *ngFor="let list of lists" class="list-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
-            <p class="text-xl font-bold">{{ list.list_title }}</p>
-            <p class="text-xl font-bold">{{ list.id }}</p>
-            <ul>
-                <li><a routerLink="#">Recipe 1</a></li>
-                <li><a routerLink="#">Recipe 2</a></li>
-                <!-- <li *ngFor="let recipe_id of recipe_ids"><a routerLink="#">{{ spoonId.recipe_id }}</a></li> -->
-            </ul>
+            <p class="text-xl font-bold"><a routerLink="/list/{{list.id}}">{{ list.id }}:
+                    {{
+                    list.list_title }}</a>
+                <fa-icon [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
+            </p>
+            <p class="text-xl">This list contains {{ list.id }} items</p>
         </div>
+    </div>
+    <div *ngIf="lists==null;">
+        Loading...
     </div>
     <section class="savedRecipes">
         <!-- <div *ngIf="savedRecipeService.savedRecipeCheck; else showNoSavedRecipes"> -->

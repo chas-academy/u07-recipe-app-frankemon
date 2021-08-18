@@ -1,5 +1,8 @@
-<div *ngIf="user!=null; ">
+<div *ngIf="user!=null;">
     <h1>Welcome back <br><span class="text-3xl">{{ user?.name }}</span></h1>
+    <p>
+        Here is where you can find and edit lists that you have created as well as your favorite recipes.
+    </p>
 </div>
 <div *ngIf="user==null;">
     Loading...

@@ -4,6 +4,8 @@ import { SavedRecipeService } from '../saved-recipe.service';
 import { User } from '../components/user-profile/user-profile.component';
 import { List } from '../List';
 import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-saved-recipe',
@@ -20,18 +22,24 @@ export class SavedRecipeComponent implements OnInit {
   listId: any;
   results: any;
   result: any;
+  id: any;
+  faTimes = faTimes;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
-    private userService: UserService
+    private userService: UserService,
+    private route: ActivatedRoute
   ) {
     this.handleGetLists();
-    this.handleGetSavedRecipes();
+    // this.handleGetSavedRecipes();
     // this.handleGetSpoonId(this.listId);
   }
+  // this.route.params.subscribe((params) => {
+  //     this.id = params['id'];
+  //   });
 
   ngOnInit(): void {
-    this.recipesList = this.savedRecipeService.getSavedRecipes();
+    // this.recipesList = this.savedRecipeService.getSavedRecipes();
   }
 
   removeRecipe(recipe: Recipe): void {
@@ -45,7 +53,7 @@ export class SavedRecipeComponent implements OnInit {
 
   handleGetSavedRecipes() {
     this.userService
-      .getSavedRecipes()
+      .getListRecipes()
       .subscribe((recipes) => (this.recipes = recipes));
   }
 

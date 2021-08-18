@@ -22,6 +22,8 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalService } from './modal.service';
 import { NewListComponent } from './components/new-list/new-list.component';
+import { ShowRecipesComponent } from './components/show-recipes/show-recipes.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { NewListComponent } from './components/new-list/new-list.component';
     LandingpageComponent,
     ModalComponent,
     NewListComponent,
+    ShowRecipesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,7 @@ import { NewListComponent } from './components/new-list/new-list.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   providers: [
     [ModalService],
