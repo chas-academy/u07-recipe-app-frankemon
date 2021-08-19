@@ -51,7 +51,7 @@ export class ModalService {
     formData.append('title', recipe.title);
     formData.append('spoonacular_id', recipeId);
 
-    const saveToConnect = this.http.post(`${this.url}/save-to-list`, formData);
+    const saveToConnect = this.http.post(`${this.url}/add-recipe`, formData);
     saveToConnect.subscribe(
       (message) => console.log(message),
       (error) => console.log(error)
