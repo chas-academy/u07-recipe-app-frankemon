@@ -20,6 +20,7 @@ export class SavedRecipeComponent implements OnInit {
   faPencilAlt = faPencilAlt;
   listRecipes: any;
   isLoading: boolean = false;
+  list: any;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
@@ -47,12 +48,8 @@ export class SavedRecipeComponent implements OnInit {
     this.isLoading = true;
   }
 
-  handleOpenEditModal(id) {
-    this.modalService.openEditModal(id);
-  }
-
-  editList(id) {
-    // this.userService.editList(id,).subscribe(() => this.handleGetLists());
+  handleOpenEditModal(list) {
+    this.modalService.openEditModal(list);
   }
 
   deleteList(id) {

@@ -32,10 +32,12 @@ export class ModalService {
     this.isOpen.next(null);
   }
 
-  openEditModal(listId) {
-    this.isOpenEdit.next(listId);
-    console.log('open', listId);
-    return (this.id = listId);
+  openEditModal(list) {
+    this.isOpenEdit.next(list);
+    this.listTitle = list.title;
+    console.log('open', list);
+    // return (this.id = list.id);
+    return list;
   }
 
   closeEditModal() {

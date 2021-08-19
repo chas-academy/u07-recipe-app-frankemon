@@ -4,8 +4,12 @@
     <div class="list-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
         <p class="text-xl">Your saved recipes in this list:</p>
         <ul *ngFor="let listRecipe of listRecipes">
-            <li>{{listRecipe.title}} <fa-icon (click)="deleteRecipe(listRecipe.id)" [ngStyle]="{'color': 'red'}"
-                    [icon]="faTimes"></fa-icon>
+            <li class="py-2 underline">
+                <a routerLink="/detail/{{listRecipe.spoonacular_id}}">{{listRecipe.title}}</a>
+                <span class="float-right">
+                    <fa-icon (click)="deleteRecipe(listRecipe.id)" [ngStyle]="{'color': 'red'}" [icon]="faTimes"
+                        class="px-2 cursor-pointer"></fa-icon>
+                </span>
             </li>
         </ul>
     </div>

@@ -9,11 +9,15 @@
         <div *ngFor="let list of lists" class="list-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
             <p class="text-xl font-bold"><a routerLink="/list/{{list.id}}">
                     {{list.list_title }}</a>
-                <fa-icon (click)="handleOpenEditModal(list.id)" [ngStyle]="{'color': 'gray'}" [icon]="faPencilAlt">
-                </fa-icon>
-                <fa-icon (click)="deleteList(list.id)" [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
+                <span class="float-right">
+                    <fa-icon (click)="handleOpenEditModal(list)" [ngStyle]="{'color': 'gray'}" [icon]="faPencilAlt"
+                        class="px-2 cursor-pointer">
+                    </fa-icon>
+                    <fa-icon (click)="deleteList(list.id)" [ngStyle]="{'color': 'red'}" [icon]="faTimes"
+                        class="px-2 cursor-pointer">
+                    </fa-icon>
+                </span>
             </p>
-            <p class="text-xl">This list contains {{ list.id }} items</p>
         </div>
     </div>
     <div *ngIf="isLoading">

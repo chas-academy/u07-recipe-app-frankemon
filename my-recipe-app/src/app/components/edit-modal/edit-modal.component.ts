@@ -119,6 +119,7 @@ export class EditModalComponent implements OnInit {
     this.userService.getLists().subscribe((lists) => {
       this.lists = lists;
       this.currentList = lists[0];
+      console.log(lists[0]);
     });
   }
 }
