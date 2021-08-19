@@ -4,6 +4,7 @@ import { SavedRecipeService } from '../saved-recipe.service';
 import { User } from '../components/user-profile/user-profile.component';
 import { UserService } from '../user.service';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-saved-recipe',
@@ -15,6 +16,7 @@ export class SavedRecipeComponent implements OnInit {
   User: User;
   lists: any; // Array of lists
   faTimes = faTimes;
+  faPencilAlt = faPencilAlt;
   listRecipes: any;
   isLoading: boolean = false;
 
@@ -41,6 +43,10 @@ export class SavedRecipeComponent implements OnInit {
 
   setIsLoading() {
     this.isLoading = true;
+  }
+
+  editList(id) {
+    // this.userService.editList(id,).subscribe(() => this.handleGetLists());
   }
 
   deleteList(id) {

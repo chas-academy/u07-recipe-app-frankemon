@@ -8,6 +8,7 @@
                     }}:
                     {{
                     list.list_title }}</a>
+                <fa-icon (click)="editList(list.id)" [ngStyle]="{'color': 'gray'}" [icon]="faPencilAlt"></fa-icon>
                 <fa-icon (click)="deleteList(list.id)" [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
             </p>
             <p class="text-xl">This list contains {{ list.id }} items</p>
