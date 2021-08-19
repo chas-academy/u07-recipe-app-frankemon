@@ -24,6 +24,7 @@ import { ModalService } from './modal.service';
 import { NewListComponent } from './components/new-list/new-list.component';
 import { ShowRecipesComponent } from './components/show-recipes/show-recipes.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditModalComponent } from './components/edit-modal/edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ModalComponent,
     NewListComponent,
     ShowRecipesComponent,
+    EditModalComponent,
   ],
   imports: [
     BrowserModule,
