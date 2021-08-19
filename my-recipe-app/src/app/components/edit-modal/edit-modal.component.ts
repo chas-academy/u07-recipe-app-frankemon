@@ -11,7 +11,7 @@ import {
 } from '@angular/animations';
 import { ModalService } from '../../modal.service';
 import { UserService } from '../../user.service';
-import { Recipe } from 'src/app/recipe';
+import { List } from '../../List';
 
 @Component({
   selector: 'app-edit-modal',
@@ -83,6 +83,9 @@ export class EditModalComponent implements OnInit {
   recipe: any;
   title: any;
   listName: any;
+  id: any;
+  listId: any;
+  listTitle: any;
 
   constructor(
     private modalService: ModalService,
@@ -90,32 +93,29 @@ export class EditModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.modalService.isOpen.subscribe((recipe) => this.change(recipe));
-  }
-
-  @HostListener('window:keydown', ['$event'])
-  onKeydown(event: any) {
-    this.onClose();
+    this.modalService.isOpenEdit.subscribe((listId) => this.change(listId));
   }
 
   onClose(): void {
-    this.modalService.close();
+    this.modalService.closeEditModal();
   }
 
-  change(recipe: Recipe) {
-    this.isOpen = recipe != null;
-    this.recipe = recipe;
-    if (recipe) {
-      this.onOpen();
+  change(listId: List) {
+    this.isOpen = listId != null;
+    this.recipe = listId;
+    if (listId) {
+      this.onOpenEdit();
     }
   }
 
-  handleEditList(listId, recipe): void {
-    this.modalService.addRecipe(this.recipe.id, listId, recipe);
+  // Add update functionality !!!
+
+  handleEditList(listTitle: string): void {
+    this.modalService.editList(listTitle);
   }
 
   // Gets users lists on open, into the modal
-  onOpen() {
+  onOpenEdit() {
     this.userService.getLists().subscribe((lists) => {
       this.lists = lists;
       this.currentList = lists[0];

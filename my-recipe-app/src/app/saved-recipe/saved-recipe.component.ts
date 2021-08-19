@@ -47,8 +47,8 @@ export class SavedRecipeComponent implements OnInit {
     this.isLoading = true;
   }
 
-  openEditModal(id) {
-    this.modalService.open(id);
+  handleOpenEditModal(id) {
+    this.modalService.openEditModal(id);
   }
 
   editList(id) {
