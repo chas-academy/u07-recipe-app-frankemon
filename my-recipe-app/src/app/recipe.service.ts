@@ -16,7 +16,7 @@ export class RecipeService {
   private spoonUrl = `https://api.spoonacular.com/recipes/`;
   private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${environment.API_KEY}`;
   private spoonSuggestedUrl = `https://api.spoonacular.com/recipes/random?number=4&apiKey=${environment.API_KEY}`;
-  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=3&apiKey=${environment.API_KEY}`;
+  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=12&apiKey=${environment.API_KEY}`;
 
   // private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/informationBulk?ids=646905,646905&apiKey=${environment.API_KEY}`;
 

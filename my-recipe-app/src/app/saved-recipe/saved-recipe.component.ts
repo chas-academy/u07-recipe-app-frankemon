@@ -5,6 +5,7 @@ import { User } from '../components/user-profile/user-profile.component';
 import { UserService } from '../user.service';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-saved-recipe',
@@ -19,10 +20,12 @@ export class SavedRecipeComponent implements OnInit {
   faPencilAlt = faPencilAlt;
   listRecipes: any;
   isLoading: boolean = false;
+  list: any;
 
   constructor(
     public savedRecipeService: SavedRecipeService,
-    private userService: UserService
+    private userService: UserService,
+    private modalService: ModalService
   ) {
     this.handleGetLists();
   }
@@ -45,8 +48,8 @@ export class SavedRecipeComponent implements OnInit {
     this.isLoading = true;
   }
 
-  editList(id) {
-    // this.userService.editList(id,).subscribe(() => this.handleGetLists());
+  handleOpenEditModal(list) {
+    this.modalService.openEditModal(list);
   }
 
   deleteList(id) {

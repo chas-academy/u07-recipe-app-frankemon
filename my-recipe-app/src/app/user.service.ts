@@ -51,18 +51,6 @@ export class UserService {
     return this.http.delete(`${this.url}/remove-recipe/${id}`);
   }
 
-  editList(id: number, listName: string): Observable<any> {
-    const formData = new FormData();
-
-    formData.append('list_title', listName);
-
-    return this.http.post(`${this.url}/update-list/`, formData).pipe(
-      map((data: Response) => {
-        return data;
-      })
-    );
-  }
-
   deleteList(id) {
     return this.http.delete(`${this.url}/remove-list/${id}`);
   }
