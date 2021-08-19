@@ -14,6 +14,8 @@ export class ShowRecipesComponent implements OnInit {
   listRecipes: any = [];
   id: any;
   savedRecipes: any;
+  list: any;
+  listTitle: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +34,6 @@ export class ShowRecipesComponent implements OnInit {
     // To array conversion
     this.userService.getListRecipes(id).subscribe((data) => {
       this.listRecipes = Object.entries(data).map((e) => e[1]);
-      // console.log(Object.entries(data).map((e) => e[1]));
     });
   }
 

@@ -51,36 +51,6 @@ export class UserService {
     return this.http.delete(`${this.url}/remove-recipe/${id}`);
   }
 
-  // editList(listName: string): Observable<any> {
-  //   const formData = new FormData();
-
-  //   // formData.append('id', id);
-  //   formData.append('list_title', listName);
-
-  //   return this.http.post(`${this.url}/update-list/`, formData).pipe(
-  //     map((data: Response) => {
-  //       return data;
-  //     })
-  //   );
-  // }
-
-  // editList(id, listTitle) {
-  //   const formData = new FormData();
-
-  //   formData.append('id', id);
-  //   formData.append('list_title', listTitle);
-
-  //   const saveToConnect = this.http.post(
-  //     `${this.url}/update-list/${id}`,
-  //     formData
-  //   );
-  //   // console.log(recipe.title, recipeId, listId);
-  //   saveToConnect.subscribe(
-  //     (message) => console.log(message),
-  //     (error) => console.log(error)
-  //   );
-  // }
-
   deleteList(id) {
     return this.http.delete(`${this.url}/remove-list/${id}`);
   }

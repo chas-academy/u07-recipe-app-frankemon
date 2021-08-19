@@ -2,12 +2,13 @@
     <app-user-profile></app-user-profile>
     <app-new-list (handleIsLoading)="setIsLoading()" (createdList)="handleGetLists()"></app-new-list>
     <h2 class="text-xl mt-2">Your recipe lists:</h2>
+    <p>
+        Click a list below to view your saved recipes.
+    </p>
     <div *ngIf="!isLoading" class="list-card-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
         <div *ngFor="let list of lists" class="list-card bg-blue-200 my-2 p-2 border rounded-lg max-w-xs">
-            <p class="text-xl font-bold"><a routerLink="/list/{{list.id}}">{{ list.id
-                    }}:
-                    {{
-                    list.list_title }}</a>
+            <p class="text-xl font-bold"><a routerLink="/list/{{list.id}}">
+                    {{list.list_title }}</a>
                 <fa-icon (click)="handleOpenEditModal(list.id)" [ngStyle]="{'color': 'gray'}" [icon]="faPencilAlt">
                 </fa-icon>
                 <fa-icon (click)="deleteList(list.id)" [ngStyle]="{'color': 'red'}" [icon]="faTimes"></fa-icon>
@@ -18,8 +19,7 @@
     <div *ngIf="isLoading">
         Loading...
     </div>
-    <section class="savedRecipes">
-        <!-- <div *ngIf="savedRecipeService.savedRecipeCheck; else showNoSavedRecipes"> -->
+    <!-- <section class="savedRecipes">
         <div class="allRecipes-wrapper grid grid-cols-1 grid-rows-1 lg:grid-cols-4 lg:grid-rows-2 gap-2">
             <ul *ngFor="let recipe of recipesList; let i = index">
                 <li>
@@ -49,4 +49,4 @@
                             class="clear bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-1 px-2 border border-red-500 hover:border-transparent rounded">
                             Remove
                         </button>
-                    </div>
+                    </div> -->

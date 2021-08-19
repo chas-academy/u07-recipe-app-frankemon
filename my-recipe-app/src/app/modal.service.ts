@@ -17,7 +17,7 @@ export class ModalService {
   authHeader = `Bearer ${this.accessToken}`;
   contentType = 'application/json';
 
-  lists: any; // Array of lists
+  listTitle: any;
   id: any;
 
   // Tracks whether modal is open or closed
@@ -26,12 +26,10 @@ export class ModalService {
 
   open(recipe) {
     this.isOpen.next(recipe);
-    // console.log('open', recipe);
   }
 
   close() {
     this.isOpen.next(null);
-    // console.log('close');
   }
 
   openEditModal(listId) {
@@ -42,7 +40,6 @@ export class ModalService {
 
   closeEditModal() {
     this.isOpenEdit.next(null);
-    // console.log('close');
   }
 
   addRecipe(recipeId, listId, recipe) {
@@ -53,27 +50,26 @@ export class ModalService {
     formData.append('spoonacular_id', recipeId);
 
     const saveToConnect = this.http.post(`${this.url}/save-to-list`, formData);
-    // console.log(recipe.title, recipeId, listId);
     saveToConnect.subscribe(
       (message) => console.log(message),
       (error) => console.log(error)
     );
+    this.close();
   }
 
   editList(listTitle) {
     const formData = new FormData();
 
-    // formData.append('id', id);
     formData.append('list_title', listTitle);
 
-    const saveToConnect = this.http.post(
+    const updateList = this.http.post(
       `${this.url}/update-list/${this.id}`,
       formData
     );
-    // console.log(recipe.title, recipeId, listId);
-    saveToConnect.subscribe(
+    updateList.subscribe(
       (message) => console.log(message),
       (error) => console.log(error)
     );
+    this.closeEditModal();
   }
 }
