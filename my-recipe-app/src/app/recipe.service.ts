@@ -6,19 +6,15 @@ import { environment } from '../environments/environment';
 import { Observable, of } from 'rxjs';
 
 import { Recipe } from './recipe';
-// import { Recipes } from './recipes';
-// import { RecipeDetail } from './recipe-detail';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
   private spoonUrl = `https://api.spoonacular.com/recipes/`;
-  private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${environment.apiUrl}`;
-  private spoonSuggestedUrl = `https://api.spoonacular.com/recipes/random?number=4&apiKey=${environment.apiUrl}`;
-  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=12&apiKey=${environment.apiUrl}`;
-
-  // private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/informationBulk?ids=646905,646905&apiKey=${environment.API_KEY}`;
+  private spoonFeaturedUrl = `https://api.spoonacular.com/recipes/random?number=1&apiKey=${environment.API_KEY}`;
+  private spoonSuggestedUrl = `https://api.spoonacular.com/recipes/random?number=4&apiKey=${environment.API_KEY}`;
+  private randomRecipesUrl = `https://api.spoonacular.com/recipes/random?number=12&apiKey=${environment.API_KEY}`;
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +38,7 @@ export class RecipeService {
   }
 
   getRecipe(id: number): Observable<Recipe> {
-    const url = `${this.spoonUrl}/${id}/information?apiKey=${environment.apiUrl}`;
+    const url = `${this.spoonUrl}/${id}/information?apiKey=${environment.API_KEY}`;
     return this.http.get<Recipe>(url).pipe(
       tap((_) => console.log(`fetched recipe id=${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))

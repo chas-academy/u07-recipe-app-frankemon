@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, pipe } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import environment from '../environments/environment';
+import { environment } from '../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
-  url = environment.API_URL;
+  url = environment.apiUrl;
   accessToken = localStorage.getItem('accessToken');
   authHeader = `Bearer ${this.accessToken}`;
   contentType = 'application/json';

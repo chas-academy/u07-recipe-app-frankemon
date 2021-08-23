@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import environment from '../environments/environment';
+import { environment } from '../environments/environment';
 import { Recipe } from './recipe';
 import { List } from './List';
 import { UserService } from './user.service';
@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 export class ModalService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
-  url = environment.API_URL;
+  url = environment.apiUrl;
   accessToken = localStorage.getItem('accessToken');
   authHeader = `Bearer ${this.accessToken}`;
   contentType = 'application/json';
