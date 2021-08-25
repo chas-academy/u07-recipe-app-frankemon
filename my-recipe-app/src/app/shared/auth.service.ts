@@ -21,7 +21,12 @@ export class AuthService {
 
   // User registration
   register(user: User): Observable<any> {
-    console.log(this.url);
+    console.log('this.url: ', this.url);
+    console.log('process.env: ', process.env);
+    console.log('process.env.API_URL: ', process.env.API_URL);
+    console.log('process.env.apiUrl: ', process.env.apiUrl);
+    console.log('environment: ', environment);
+    console.log('environment.apiUrl: ', environment.apiUrl);
     return this.http.post(`${this.url}/api/auth/signup`, user);
     // return this.http.post('http://127.0.0.1:80/api/auth/signup', user);
   }
