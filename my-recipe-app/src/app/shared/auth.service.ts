@@ -21,6 +21,7 @@ export class AuthService {
 
   // User registration
   register(user: User): Observable<any> {
+    console.log(this.url);
     return this.http.post(`${this.url}/api/auth/signup`, user);
     // return this.http.post('http://127.0.0.1:80/api/auth/signup', user);
   }
